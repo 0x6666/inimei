@@ -1,0 +1,15 @@
+<h1>INiMei</h1>
+
+<% if @user %>
+    <p>Hi <%= @user.name %></p>
+<% else %>
+    <p>Hi, Test Rails Send Mail</p>
+<% end %>
+<p>
+  Welcome to the INiMei! Click on the link below to activate your account:
+</p>
+
+<% if @user %>
+    <%= link_to 'Activate', edit_account_activation_url(@user.activation_token,
+                                                        email: @user.email) %>
+<% end %>
