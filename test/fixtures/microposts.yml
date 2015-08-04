@@ -22,7 +22,7 @@ most_recent:
 <% 30.times do |n| %>
 micropost_<%= n %>:
   content: <%= Faker::Lorem.sentence(5) %>
-  created_at: <%= Time.zone.now.to_datetime %>
+  created_at: <%= 2.hours.ago.to_datetime %>
   user: michael
 <% end %>
 
