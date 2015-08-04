@@ -11,7 +11,7 @@ User.create!(name: 'Example User',
              password_confirmation: 'foobar',
              admin: true,
              activated: true,
-             activated_at: Time.zone.now)
+             activated_at: Time.zone.now.to_datetime)
 
 99.times do |n|
   User.create!(name: Faker::Name.name,
@@ -19,7 +19,7 @@ User.create!(name: 'Example User',
                password: 'password',
                password_confirmation: 'password',
                activated: true,
-               activated_at: Time.zone.now)
+               activated_at: Time.zone.now.to_datetime)
 end
 
 users = User.order(:created_at).take(6)
