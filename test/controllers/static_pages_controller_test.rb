@@ -8,8 +8,13 @@ class StaticPagesControllerTest < ActionController::TestCase
 
   test 'should get home' do
     get :home
-    assert_response :success
-    assert_select 'title', full_title('Home')
+    assert_response :redirect
+    if is_logged_in?
+      assert_select 'title', full_title('Home')
+    #else
+      #assert_select 'title', full_title('About')
+    end
+
   end
 
   test 'should get help' do
