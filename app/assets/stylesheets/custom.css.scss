@@ -295,12 +295,16 @@ span.picture {
 /* about */
 .personal-info {
   margin-top: 30px;
+  width: auto;
+  padding-right: 0px;
 }
 
-#my-char-image {
+.my-char-image {
   width: auto;
   display: inline;
   white-space:nowrap;
+  padding-left: 0px;
+  padding-right: 5px;
   #AsciiImage {
     word-break: keep-all;
     word-wrap: normal;

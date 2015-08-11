@@ -25,7 +25,7 @@ Rails.application.configure do
       :domain => '163.com',
       :authentication => :login,
       :user_name => 'yangsongfwd@163.com',
-      :password => ''
+      :password => ENV['mail_psw']
   }
 
   # Print deprecation notices to the Rails logger.
