@@ -1,11 +1,10 @@
 module UsersHelper
 
   def user_head_image_url(user, options = {size: 80})
-    img_url = user.user_img
+    img_url = user.avatar.url if user.avatar?
     size = options[:size]
     if img_url.blank?
-      gravatar_id = Digest::MD5::hexdigest(user.email.downcase)
-      img_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
+      img_url = "http://7xktkg.com1.z0.glb.clouddn.com/default_avatar.jpg?imageView/1/w/#{size}/h/#{size}"
     else
       img_url += "?imageView/1/w/#{size}/h/#{size}"
     end

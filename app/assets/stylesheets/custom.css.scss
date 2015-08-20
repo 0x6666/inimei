@@ -232,6 +232,39 @@ input {
   margin-left: 0;
 }
 
+/* user edit form*/
+.change_avatar {
+
+  .change {
+    position: relative;
+    background: lightgrey;
+    width: 130px;
+    height: 28px;
+    line-height: 28px;
+    color: black;
+    font-size: 14px;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 10px;
+    cursor: pointer;
+    padding-top: 0px;
+
+    #user_avatar{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: auto;
+      height: auto;
+      line-height: 0;
+      opacity: 0;
+    }
+  }
+
+  margin-bottom: 5px;
+}
+
+
 /* Users index */
 .users {
   list-style: none;

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150809051823) do
+ActiveRecord::Schema.define(version: 20150820125232) do
 
   create_table "microposts", force: :cascade do |t|
     t.text     "content",    limit: 65535
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20150809051823) do
     t.datetime "activated_at"
     t.string   "reset_digest",      limit: 255
     t.datetime "reset_sent_at"
-    t.string   "user_img",          limit: 255
+    t.string   "avatar",            limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
