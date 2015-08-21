@@ -3,10 +3,13 @@
     <div class="field">
       <%= f.text_area :content, placeholder: 'Compose new micropost...' %>
     </div>
-    <span class="picture">
-      <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
-    </span>
-    <div id="upload"></div>
+
+    <div id="add_picture">
+      <a href="#" class="btn change" id="picture_input"><span class="icon-picture"></span>Choose Picture
+        <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+      </a>
+    </div>
+
     <%= f.submit 'Post', class: 'btn btn-primary' %>
 <% end %>
 
@@ -31,7 +34,7 @@
                       var image = new Image();
                       image.src = event.target.result;
                       image.width = 100;
-                      document.getElementById('upload').appendChild(image);
+                      document.getElementById('add_picture').insertBefore(image, document.getElementById('picture_input'));
                   };
                   reader.readAsDataURL(this.files[0]);
               }

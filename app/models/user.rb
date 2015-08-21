@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
 
   mount_uploader :avatar, AvatarUploader
 
-  attr_accessor :remember_token, :activation_token, :reset_token
+  attr_accessor :remember_token, :activation_token, :reset_token, :attr_accessible
   has_many :microposts, dependent: :destroy
   has_many :active_relationships, class_name: 'Relationship',
            foreign_key: 'follower_id',

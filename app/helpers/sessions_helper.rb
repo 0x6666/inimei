@@ -4,6 +4,14 @@ module SessionsHelper
     session[:user_id] = user.id
   end
 
+  def first_visit?
+    !session[:visited]
+  end
+
+  def mark_visited
+    session[:visited] = true
+  end
+
   def current_user
     if user_id = session[:user_id]
       @current_user ||= User.find_by(id: user_id)

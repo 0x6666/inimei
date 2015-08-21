@@ -145,7 +145,7 @@ aside {
   }
 }
 
-.gravatar {
+.avatar {
   float: left;
   margin-right: 10px;
 }
@@ -305,7 +305,7 @@ input {
     margin-left: 60px;
   }
 
-  .gravatar {
+  .avatar {
     float: left;
     margin-right: 10px;
     margin-top: 5px;
@@ -318,12 +318,38 @@ aside {
     margin-bottom: 5px;
   }
 }
-span.picture {
-  margin-top: 10px;
-  input {
-    border: 0;
+
+
+/* user edit form*/
+#add_picture {
+
+  .change {
+    position: relative;
+    background: lightgrey;
+    width: 130px;
+    height: 28px;
+    color: black;
+    font-size: 14px;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 10px;
+    cursor: pointer;
+    padding-top: 0px;
+
+    #micropost_picture{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: auto;
+      height: auto;
+      line-height: 0;
+      opacity: 0;
+    }
   }
+
 }
+
 
 /* about */
 .personal-info {

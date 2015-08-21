@@ -1,6 +1,6 @@
 <li id="micropost-
   <% micropost.id %>">
-  <%= link_to user_head_image_url(micropost.user, size: 50), micropost.user %>
+  <%= link_to user_avatar(micropost.user, size: 50), micropost.user %>
   <span class="user"><%= link_to micropost.user.name, user_path(micropost.user) %></span>
   <span class="content">
     <%= micropost.content %>

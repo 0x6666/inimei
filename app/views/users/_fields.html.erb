@@ -13,7 +13,7 @@
 <%= f.password_field :password_confirmation, class: 'form-control' %>
 
 <div class="change_avatar" id="change_avatar">
-  <a href="#" class="btn change"><span class="icon-picture"></span>Choose Picture
+  <a href="#" class="btn change" id="avatar_input"><span class="icon-picture"></span>Choose Picture
     <%= f.file_field :avatar, accept: 'image/jpeg,image/gif,image/png' %>
   </a>
 </div>
@@ -37,8 +37,8 @@
                     reader.onload = function (event) {
                         var image = new Image();
                         image.src = event.target.result;
-                        image.width = 120;
-                        document.getElementById('change_avatar').appendChild(image);
+                        image.width = 130;
+                        document.getElementById('change_avatar').insertBefore(image,document.getElementById('avatar_input'));
                     };
                     reader.readAsDataURL(this.files[0]);
                 }
