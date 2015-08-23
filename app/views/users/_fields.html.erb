@@ -12,10 +12,13 @@
 <%= f.label :password_confirmation, 'Confirmation' %>
 <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-<div class="change_avatar" id="change_avatar">
-  <a href="#" class="btn change" id="avatar_input"><span class="icon-picture"></span>Choose Picture
+<div id="change_avatar">
+  <img alt=<%= @user.name %> id="avatar_preview" width="130" height="130"
+       src=<%= user_avatar_url(@user, size: 130) %>>
+
+  <span class="btn change" id="avatar_input">Choose Picture
     <%= f.file_field :avatar, accept: 'image/jpeg,image/gif,image/png' %>
-  </a>
+  </span>
 </div>
 
 <script type="text/javascript">
@@ -35,10 +38,8 @@
                 if (acceptedTypes[this.files[0].type] === true) {
                     var reader = new FileReader();
                     reader.onload = function (event) {
-                        var image = new Image();
+                        image = document.getElementById('avatar_preview')
                         image.src = event.target.result;
-                        image.width = 130;
-                        document.getElementById('change_avatar').insertBefore(image,document.getElementById('avatar_input'));
                     };
                     reader.readAsDataURL(this.files[0]);
                 }

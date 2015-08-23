@@ -5,9 +5,9 @@
     </div>
 
     <div id="add_picture">
-      <a href="#" class="btn change" id="picture_input"><span class="icon-picture"></span>Choose Picture
+      <span class="btn change" id="picture_input">Choose Picture
         <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
-      </a>
+      </span>
     </div>
 
     <%= f.submit 'Post', class: 'btn btn-primary' %>

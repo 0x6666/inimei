@@ -187,6 +187,7 @@ aside {
     padding: 0;
   }
 }
+
 .users.follow {
   padding: 0;
 }
@@ -233,7 +234,12 @@ input {
 }
 
 /* user edit form*/
-.change_avatar {
+#change_avatar {
+  margin-bottom: 10px;
+
+  #avatar_preview {
+    margin-right: 10px;
+  }
 
   .change {
     position: relative;
@@ -243,27 +249,25 @@ input {
     line-height: 28px;
     color: black;
     font-size: 14px;
-    display: block;
+    //    display: block;
     text-align: center;
     text-decoration: none;
-    margin-bottom: 10px;
     cursor: pointer;
     padding-top: 0px;
+    vertical-align: bottom;
 
-    #user_avatar{
+    #user_avatar {
       position: absolute;
       top: 0;
       left: 0;
-      width: auto;
+      width: 130px;
       height: auto;
       line-height: 0;
       opacity: 0;
     }
   }
 
-  margin-bottom: 5px;
 }
-
 
 /* Users index */
 .users {
@@ -319,7 +323,6 @@ aside {
   }
 }
 
-
 /* user edit form*/
 #add_picture {
 
@@ -328,6 +331,7 @@ aside {
     background: lightgrey;
     width: 130px;
     height: 28px;
+    line-height: 28px;
     color: black;
     font-size: 14px;
     display: block;
@@ -337,11 +341,11 @@ aside {
     cursor: pointer;
     padding-top: 0px;
 
-    #micropost_picture{
+    #micropost_picture {
       position: absolute;
       top: 0;
       left: 0;
-      width: auto;
+      width: 130px;
       height: auto;
       line-height: 0;
       opacity: 0;
@@ -349,7 +353,6 @@ aside {
   }
 
 }
-
 
 /* about */
 .personal-info {
@@ -361,7 +364,7 @@ aside {
 .my-char-image {
   width: auto;
   display: inline;
-  white-space:nowrap;
+  white-space: nowrap;
   padding-left: 0px;
   padding-right: 5px;
   #AsciiImage {
