@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
 
   attr_accessor :remember_token, :activation_token, :reset_token, :attr_accessible
+
+  #microposts
   has_many :microposts, dependent: :destroy
   has_many :active_relationships, class_name: 'Relationship',
            foreign_key: 'follower_id',
@@ -13,6 +15,9 @@ class User < ActiveRecord::Base
 
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+
+  #schedules
+  has_many :schedules, dependent: :destroy
 
   before_save :downcase_email
   before_create :create_activation_digest

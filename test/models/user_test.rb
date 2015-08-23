@@ -107,5 +107,14 @@ class UserTest < ActiveSupport::TestCase
       assert_not michael.feed.include?(post_unfollowed)
     end
   end
+
+  test 'associated schedules should be destroyed' do
+    @user.save
+    @user.schedules.create!(title: 'test destroy', content: 'what can I do?')
+    assert_difference 'Schedule.count', -1 do
+      @user.destroy
+    end
+  end
+
 end
 

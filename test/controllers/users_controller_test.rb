@@ -74,4 +74,15 @@ class UsersControllerTest < ActionController::TestCase
     get :followers, id: @user
     assert_redirected_to login_url
   end
+
+  test 'should redirect schedules when not logged in' do
+    get :schedules, id: @user
+    assert_redirected_to login_url
+  end
+
+  test 'should redirect schedules when logged in as wrong user' do
+    log_in_as @other_user
+    get :schedules, id: @user
+    assert_redirected_to root_url
+  end
 end

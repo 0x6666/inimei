@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150820125232) do
+ActiveRecord::Schema.define(version: 20150823100423) do
 
   create_table "microposts", force: :cascade do |t|
     t.text     "content",    limit: 65535
@@ -35,6 +35,17 @@ ActiveRecord::Schema.define(version: 20150820125232) do
   add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true, using: :btree
   add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id", using: :btree
 
+  create_table "schedules", force: :cascade do |t|
+    t.string   "title",        limit: 255
+    t.text     "content",      limit: 65535
+    t.datetime "completed_at"
+    t.integer  "user_id",      limit: 4
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "schedules", ["user_id"], name: "index_schedules_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "name",              limit: 255
     t.string   "email",             limit: 255
@@ -53,4 +64,5 @@ ActiveRecord::Schema.define(version: 20150820125232) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
+  add_foreign_key "schedules", "users"
 end
