@@ -7,13 +7,30 @@ class PictureUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
+  storage :qiniu
   # storage :fog
+
+  # 指定预转数据处理命令
+  # https://github.com/qiniu/ruby-sdk/issues/48
+  # http://docs.qiniu.com/api/put.html#uploadToken
+  # http://docs.qiniutek.com/v3/api/io/#uploadToken-asyncOps
+  # http://developer.qiniu.com/docs/v6/api/reference/security/put-policy.html#put-policy-persistent-ops-explanation
+  def qiniu_async_ops
+    commands = []
+    %W(small little middle large).each do |style|
+      commands << "http://#{self.qiniu_bucket_domain}/#{self.store_dir}/#{self.filename}/#{style}"
+    end
+    commands
+  end
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    if Rails.env.production?
+      "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    else
+      "uploads/test/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    end
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
@@ -45,8 +62,8 @@ class PictureUploader < CarrierWave::Uploader::Base
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
-  # def filename
-  #   "something.jpg" if original_filename
-  # end
+  def filename
+    "picture.#{file.extension}" if original_filename.present?
+  end
 
 end
