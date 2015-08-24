@@ -2,6 +2,13 @@
 <h1>Help</h1>
 
 <p>Sorry, There's nothing here.</p>
+
+<% if Rails.env.development? %>
+    <div class="dev-help">
+      <h3>CSS</h3>
+      当行文字垂直居中,只需要设置height,line-height相等即可<br>
+    </div>
+<% end %>
 <!--
 <div class="container">
 <h2>RubyMine 快捷键</h2>

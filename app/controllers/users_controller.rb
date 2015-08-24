@@ -64,7 +64,7 @@ class UsersController < ApplicationController
   end
 
   def schedules
-
+    @user = User.find(params[:id])
   end
 
   private
