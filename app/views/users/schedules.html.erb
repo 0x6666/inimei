@@ -15,45 +15,45 @@
           <a class="selectBtn currentDay" href="javascript:" onClick="CalendarHandler.CreateCurrentCalendar(0,0,0);">今天</a>
         </div>
         <div id="context">
-          <div class="week">
-            <h3> 一 </h3>
-
-            <h3> 二 </h3>
-
-            <h3> 三 </h3>
-
-            <h3> 四 </h3>
-
-            <h3> 五 </h3>
-
-            <h3> 六 </h3>
-
-            <h3> 日 </h3>
-          </div>
           <div id="center">
             <div id="centerMain">
               <div id="selectYearDiv"></div>
               <div id="centerCalendarMain">
+                <div class="week" id="week">
+                  <h3> 一 </h3>
+
+                  <h3> 二 </h3>
+
+                  <h3> 三 </h3>
+
+                  <h3> 四 </h3>
+
+                  <h3> 五 </h3>
+
+                  <h3> 六 </h3>
+
+                  <h3> 日 </h3>
+                </div>
                 <div id="Container"></div>
               </div>
               <div id="selectMonthDiv"></div>
             </div>
           </div>
-          <div id="foots"><span id="footNow">19:14:34</span></div>
+          <!--div id="foots"><span id="footNow">19:14:34</span></div-->
         </div>
       </div>
     </section>
   </aside>
   <div class="col-md-8">
-    <h3>Micropost Feed</h3>
-    <!--%= render 'shared/feed' %-->
+    <h3>Schedules</h3>
+
+    <div id="schedules_view">
+      <%= render 'user_schedules' %>
+    </div>
   </div>
 </div>
 
 <script type="text/javascript">
-    $(document).ready(function (e) {
-        CalendarHandler.initialize();
-    });
 
     var CalendarHandler = {
         currentYear: 0,
@@ -61,24 +61,26 @@
         isRunning: false,
         showYearStart: 2015,
         tag: 0,
-        currentModel: 0,//0 day, 1 month, 2 year
-        initialize: function () {
+        currentType: 0,//0 day, 1 month, 2 year
+        initialize: function (y, m, d) {
             var nowDate = new Date();
             CalendarHandler.showYearStart = nowDate.getFullYear() - 5;
-            $calendarItem = this.CreateCalendar(0, 0, 0);
+            $calendarItem = CalendarHandler.CreateCalendar(y, m, d);
             $("#Container").append($calendarItem);
 
-            $("#context").css("height", $("#CalendarMain").height() - 65 + "px");
-            $("#center").css("height", $("#context").height() - 30 + "px");
-            $("#selectYearDiv").css("height", $("#context").height() - 30 + "px").css("width", $("#context").width() + "px");
-            $("#selectMonthDiv").css("height", $("#context").height() - 30 + "px").css("width", $("#context").width() + "px");
-            $("#centerCalendarMain").css("height", $("#context").height() - 30 + "px").css("width", $("#context").width() + "px");
+            CalendarHandler.currentType = 0;
+
+            $("#context").css("height", $("#CalendarMain").height() - $("#title").height() + 1 + "px");
+            $("#center").css("height", $("#context").height() + "px");
+            $("#selectYearDiv").css("height", $("#context").height() + "px").css("width", $("#context").width() + "px");
+            $("#selectMonthDiv").css("height", $("#context").height() + "px").css("width", $("#context").width() + "px");
+            $("#centerCalendarMain").css("height", $("#context").height() + "px").css("width", $("#context").width() + "px");
 
             $calendarItem.css("height", $("#context").height() - 30 + "px"); //.css("visibility","hidden");
-            $("#Container").css("height", "0px").css("width", "0px").css("margin-left", $("#context").width() / 2 + "px").css("margin-top", ($("#context").height() - 30) / 2 + "px");
+            $("#Container").css("height", "0px").css("width", "0px").css("margin-left", $("#context").width() / 2 + "px").css("margin-top", $("#context").height() / 2 + "px");
             $("#Container").animate({
                 width: $("#context").width() + "px",
-                height: ($("#context").height() - 30) * 2 + "px",
+                height: ($("#centerCalendarMain").height() - $("#week").height()) * 2 + "px",
                 marginLeft: "0px",
                 marginTop: "0px"
             }, 300, function () {
@@ -92,13 +94,12 @@
                 "line-height": itemPaddintTop + "px",
                 "height": itemPaddintTop + "px"
             });
-            $(".currentItem>a").css("margin-left", ($(".item").width() - 25) / 2 + "px").css("margin-top", ($(".item").height() - 25) / 2 + "px");
             $(".week>h3").css("width", $(".week").width() / 7 + "px");
-            this.RunningTime();
+            //this.RunningTime();
         },
         CreateSelectYear: function (showYearStart) {
 
-            CalendarHandler.currentModel = 2;
+            CalendarHandler.currentType = 2;
             CalendarHandler.showYearStart = showYearStart;
             $(".currentDay").show();
             $("#selectYearDiv").children().remove();
@@ -106,7 +107,7 @@
             var nowYear = nowDate.getFullYear();
 
             var itemWidth = ($("#selectYearDiv").width() - 3) / 4; //3 border
-            var itemHeight = ($("#selectYearDiv").height() - 1) / 3; //3 border
+            var itemHeight = ($("#selectYearDiv").height() - 2) / 3; //2 border
             var yearIndex = 1;
             for (var i = showYearStart; i < showYearStart + 12; ++i, ++yearIndex) {
 
@@ -135,16 +136,16 @@
                 });
 
                 if (yearIndex % 4 == 1)
-                    $("#selectYearDiv").find("#" + yearIndex).css("width", itemWidth + 1 + "px");
+                    $yearItem.css("width", itemWidth + 1 + "px");
                 else if (yearIndex % 4 == 0)
-                    $("#selectYearDiv").find("#" + yearIndex).css("border-right", "none").css("width", itemWidth + "px");
+                    $yearItem.css("border-right", "none").css("width", itemWidth + "px");
                 else
-                    $("#selectYearDiv").find("#" + yearIndex).css("width", itemWidth + 1 + "px");
+                    $yearItem.css("width", itemWidth + 1 + "px");
 
-                if (yearIndex <= 4)
-                    $("#selectYearDiv").find("#" + yearIndex).css("height", itemHeight + 1 + "px").css("line-height", itemHeight + 1 + "px");
+                if (yearIndex <= 8)
+                    $yearItem.css("height", itemHeight + 1 + "px").css("line-height", itemHeight + 1 + "px");
                 else
-                    $("#selectYearDiv").find("#" + yearIndex).css("height", itemHeight + "px").css("line-height", itemHeight + "px").css("border-top", "none");
+                    $yearItem.css("height", itemHeight + "px").css("line-height", itemHeight + "px").css("border-bottom", "none");
 
             }
 
@@ -160,10 +161,10 @@
             $("#selectMonthDiv").children().remove();
             CalendarHandler.RefreshCurrentYearLabel();
             var nowDate = new Date;
-            this.currentModel = 1;
+            this.currentType = 1;
 
             var itemWidth = ($("#selectMonthDiv").width() - 3) / 4; //3 border
-            var itemHeight = ($("#selectMonthDiv").height() - 1) / 3; //3 border
+            var itemHeight = ($("#selectMonthDiv").height() - 2) / 3; //2 border
 
             for (var i = 1; i < 13; i++) {
                 if ((i == nowDate.getMonth() + 1) && (CalendarHandler.currentYear == nowDate.getFullYear()))
@@ -173,7 +174,7 @@
 
                 $("#selectMonthDiv").append($monthItem);
                 $monthItem.click(function () {
-                    $calendarItem = CalendarHandler.CreateCalendar(CalendarHandler.currentYear, Number($(this).attr("id")), 1);
+                    $calendarItem = CalendarHandler.CreateCalendar(CalendarHandler.currentYear, Number($(this).attr("id")), 0);
                     $("#Container").append($calendarItem);
                     CalendarHandler.CSS()
                     CalendarHandler.isRunning = true;
@@ -189,16 +190,16 @@
                 });
 
                 if (i % 4 == 1)
-                    $("#selectMonthDiv").find("#" + i).css("width", itemWidth + 1 + "px");
+                    $monthItem.css("width", itemWidth + 1 + "px");
                 else if (i % 4 == 0)
-                    $("#selectMonthDiv").find("#" + i).css("border-right", "none").css("width", itemWidth + "px");
+                    $monthItem.css("border-right", "none").css("width", itemWidth + "px");
                 else
-                    $("#selectMonthDiv").find("#" + i).css("width", itemWidth + 1 + "px");
+                    $monthItem.css("width", itemWidth + 1 + "px");
 
-                if (i <= 4)
-                    $("#selectMonthDiv").find("#" + i).css("height", itemHeight + 1 + "px").css("line-height", itemHeight + 1 + "px");
+                if (i <= 8)
+                    $monthItem.css("height", itemHeight + 1 + "px").css("line-height", itemHeight + 1 + "px");
                 else
-                    $("#selectMonthDiv").find("#" + i).css("height", itemHeight + "px").css("line-height", itemHeight + "px").css("border-top", "none");
+                    $monthItem.css("height", itemHeight + "px").css("line-height", itemHeight + "px").css("border-bottom", "none");
             }
 
             $("#centerMain").animate({
@@ -238,38 +239,35 @@
             return mDay;
         },
         CreateCalendar: function (y, m, d) {
-            $dayItem = $("<div class=\"dayItem\"></div>");
-            this.currentModel = 0;
-            //获取当前月份的天数
+            this.currentType = 0;
+            $dayItems = $("<div class=\"dayItem\"></div>");
+
             var nowDate = new Date();
-            if (y == nowDate.getFullYear() && m == nowDate.getMonth() + 1 || (y == 0 && m == 0))
+            if ((y == nowDate.getFullYear() && m == nowDate.getMonth() + 1) || (y == 0 && m == 0))
                 $(".currentDay").hide();
+
             var nowYear = y == 0 ? nowDate.getFullYear() : y;
             this.currentYear = nowYear;
             var nowMonth = m == 0 ? nowDate.getMonth() + 1 : m;
             this.currentMonth = nowMonth;
             var nowDay = d == 0 ? nowDate.getDate() : d;
+
             $(".selectYear").html(nowYear + "年");
             $(".selectMonth").html(nowMonth + "月");
+
             var nowDaysNub = this.CalculateMonthDays(nowMonth, nowYear);
-            //获取当月第一天是星期几
-            //var weekDate = new Date(nowYear+"-"+nowMonth+"-"+1);
-            //alert(weekDate.getDay());
             var nowWeek = parseInt(this.CalculateWeek(nowYear, nowMonth, 1));
-            //nowWeek=weekDate.getDay()==0?7:weekDate.getDay();
-            //var nowWeek=weekDate.getDay();
-            //获取上个月的天数
             var lastMonthDaysNub = this.CalculateMonthDays((nowMonth - 1), nowYear);
 
+            //生成上月剩下的日期
             if (nowWeek != 0) {
-                //生成上月剩下的日期
                 for (var i = (lastMonthDaysNub - (nowWeek - 1)); i < lastMonthDaysNub; i++) {
-                    $dayItem.append("<div class=\"item lastItem\">" + (i + 1) + "</div>");
+                    $dayItems.append("<div class=\"item lastItem\">" + (i + 1) + "</div>");
                 }
             }
 
             //生成当月的日期
-            for (var i = 0; i < nowDaysNub; i++) {
+            for (var i = 0; i < nowDaysNub; ++i) {
                 if ((nowYear == nowDate.getFullYear()) && (nowMonth == nowDate.getMonth() + 1) && (i == (nowDay - 1)))
                     $curDayItem = $("<div class=\"item itemBtn currentItem \">" + (i + 1) + "</div>");
                 else
@@ -279,7 +277,7 @@
                     CalendarHandler.OnClickedDay(Number($(this).html()));
                 })
 
-                $dayItem.append($curDayItem);
+                $dayItems.append($curDayItem);
             }
 
             //获取总共已经生成的天数
@@ -287,27 +285,27 @@
             //如果小于42，往下个月推算
             if (hasCreateDaysNub < 42) {
                 for (var i = 0; i <= (42 - hasCreateDaysNub); i++) {
-                    $dayItem.append("<div class=\"item lastItem\">" + (i + 1) + "</div>");
+                    $dayItems.append("<div class=\"item lastItem\">" + (i + 1) + "</div>");
                 }
             }
 
-            return $dayItem;
+            return $dayItems;
         },
         CSS: function () {
-            var itemPaddintTop = $(".dayItem").height() / 6;
+            var itemH = $(".dayItem").height() / 6;
+            var itemW = $(".week").width() / 7;
             $(".item").css({
-                "width": $(".week").width() / 7 + "px",
-                "line-height": itemPaddintTop + "px",
-                "height": itemPaddintTop + "px"
+                "width": itemW + "px",
+                "line-height": itemH + "px",
+                "height": itemH + "px"
             });
-            $(".currentItem>a").css("margin-left", ($(".item").width() - 25) / 2 + "px").css("margin-top", ($(".item").height() - 25) / 2 + "px");
         },
         CalendarNext: function () {
             if (this.isRunning == false) {
-                if (CalendarHandler.currentModel == 1) { // month model
+                if (CalendarHandler.currentType == 1) { // month model
                     ++this.currentYear;
                     this.CreateSelectMonth();
-                } else if (CalendarHandler.currentModel == 2) { // year model
+                } else if (CalendarHandler.currentType == 2) { // year model
 
                     CalendarHandler.CreateSelectYear(CalendarHandler.showYearStart + 12);
 
@@ -339,31 +337,44 @@
         },
         CalendarLast: function () {
             if (this.isRunning == false) {
-                if (CalendarHandler.currentModel == 1) { //month model
+                if (CalendarHandler.currentType == 1) { //month model
                     --this.currentYear;
                     this.CreateSelectMonth();
-                } else if (CalendarHandler.currentModel == 2) { //year model
+                } else if (CalendarHandler.currentType == 2) { //year model
 
                     CalendarHandler.CreateSelectYear(CalendarHandler.showYearStart - 12);
 
-                } else /* if (CalendarHandler.currentModel == 0)*/ { // day model
+                } else /* if (CalendarHandler.currentType == 0)*/ { // day model
                     $(".currentDay").show();
                     var nowDate = new Date();
                     var m = this.currentMonth == 1 ? 12 : this.currentMonth - 1;
                     var y = this.currentMonth == 1 ? (this.currentYear - 1) : this.currentYear;
                     var d = 0;
 
-                    if (y == nowDate.getFullYear() && m == nowDate.getMonth() + 1) d = nowDate.getDate();
-                    else d = 1;
+                    if (y == nowDate.getFullYear() && m == nowDate.getMonth() + 1)
+                        d = nowDate.getDate();
+                    else
+                        d = 1;
+
+                    var oldH = $(".dayItem").height();
+
                     $calendarItem = this.CreateCalendar(y, m, d);
-                    $("#Container").append($calendarItem);
-                    var itemPaddintTop = $(".dayItem").height() / 6;
-                    this.CSS();
+                    $("#Container").prepend($calendarItem);
+
+                    var itemH = oldH / 6;
+                    $(".item").css({
+                        "width": $(".week").width() / 7 + "px",
+                        "line-height": itemH + "px",
+                        "height": itemH + "px"
+                    });
+
                     this.isRunning = true;
-                    $($("#Container").find(".dayItem")[0]).animate({
-                        height: "0px"
+
+                    $calendarItem.css("height", 0 + "px");
+                    $calendarItem.animate({
+                        height: oldH + "px"
                     }, 300, function () {
-                        $(this).remove();
+                        $($("#Container").find(".dayItem")[1]).remove();
                         CalendarHandler.isRunning = false;
                     });
                 }
@@ -387,20 +398,35 @@
                 }, 500);
             }
         },
-        RunningTime: function () {
-            var mTiming = setInterval(function () {
-                var nowDate = new Date();
-                var h = nowDate.getHours() < 10 ? "0" + nowDate.getHours() : nowDate.getHours();
-                var m = nowDate.getMinutes() < 10 ? "0" + nowDate.getMinutes() : nowDate.getMinutes();
-                var s = nowDate.getSeconds() < 10 ? "0" + nowDate.getSeconds() : nowDate.getSeconds();
-                var nowTime = h + ":" + m + ":" + s;
-                $("#footNow").html(nowTime);
-            }, 1000);
+        /*RunningTime: function () {
+         var mTiming = setInterval(function () {
+         var nowDate = new Date();
+         var h = nowDate.getHours() < 10 ? "0" + nowDate.getHours() : nowDate.getHours();
+         var m = nowDate.getMinutes() < 10 ? "0" + nowDate.getMinutes() : nowDate.getMinutes();
+         var s = nowDate.getSeconds() < 10 ? "0" + nowDate.getSeconds() : nowDate.getSeconds();
+         var nowTime = h + ":" + m + ":" + s;
+         $("#footNow").html(nowTime);
+         }, 1000);
 
-        },
+         },*/
         OnClickedDay: function (d) {
-            // do ajax by y,m,d
-            alert(d)
+            $.ajax({
+                url: '<%=schedules_user_path(current_user)%>',
+                type: 'post',
+                data: {date: {year: CalendarHandler.currentYear, month: CalendarHandler.currentMonth, day: d}},
+                dataType: 'script',
+                error: function () {
+                    alert('error');
+                },
+            });
         }
     }
+
+    $(document).ready(function (e) {
+        <% if @select_date %>
+          CalendarHandler.initialize(<%= @select_date.year %>, <%= @select_date.month %>, <%= @select_date.day %>);
+        <% else %>
+          CalendarHandler.initialize(0, 0, 0);
+        <% end %>
+    });
 </script>

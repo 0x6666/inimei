@@ -1,0 +1,5 @@
+$("#schedule-<%= @schedule.id%>").animate({
+    height: "0px"
+}, 300, function () {
+    $(this).remove();
+});

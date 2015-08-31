@@ -1,0 +1,20 @@
+<%= form_for(@user.schedules.build) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <%= f.label 'Plan Completed at', id: 'completed-at-label' %>
+    <div class="date-time-select">
+      <% if completed_at.nil? %>
+          <%= f.datetime_select :planed_completed_at %>
+      <% else %>
+          <% now = Time.now %>
+          <%= f.datetime_select :planed_completed_at,
+                                default: completed_at,
+                                start_year: now.year %>
+      <% end %>
+    </div>
+
+    <%= f.text_field :title, placeholder: 'Title here...' %>
+    <%= f.text_area :content, placeholder: 'Compose new schedule...' %>
+
+    <%= f.submit 'Create', class: 'btn btn-primary' %>
+<% end %>

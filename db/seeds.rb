@@ -46,3 +46,14 @@ following = users[2..50]
 followers = users[3..40]
 following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
+
+yangsong = User.find_by_email('yangsongfwd@163.com')
+(0..20).each do |index|
+  title = Faker::Lorem.words(2).join(' ')
+  content = Faker::Lorem.sentence(8)
+
+  yangsong.schedules.create!(title: title,
+                             content: content,
+                             planed_completed_at: (index % 5).days.ago.to_datetime)
+
+end

@@ -316,6 +316,37 @@ input {
   }
 }
 
+/* schedules */
+.schedules {
+  list-style: none;
+  padding: 0;
+
+  .title {
+    padding-top: 0px;
+  }
+
+  li {
+    padding-bottom: 10px;
+    border-top: 1px solid #e8e8e8;
+  }
+
+  .user {
+    margin-top: 5em;
+    padding-top: 0;
+  }
+
+  .content {
+    display: block;
+    margin-left: 10px;
+  }
+
+  .timestamp {
+    color: $gray-light;
+    display: block;
+    margin-left: 10px;
+  }
+}
+
 aside {
   textarea {
     height: 100px;
@@ -382,12 +413,13 @@ aside {
 /* Calendar */
 #CalendarMain {
   width: 260px;
-  height: 300px;
+  height: 280px;
   border: 1px solid #ccc;
 
   #title {
     height: 30px;
     background-color: #2b2b2b;
+    margin-top: -1px;
     margin-right: -1px;
     margin-left: -1px;
 
@@ -437,130 +469,128 @@ aside {
     width: 100%;
     background-color: #fff;
 
-    .week {
-      width: 100%;
-      height: 30px;
-
-      h3 {
-        float: left;
-        color: #808080;
-        text-align: center;
-        margin: 0;
-        padding: 0;
-        margin-top: 5px;
-        font-size: 16px;
-      }
+    h3 {
+      float: left;
+      color: #808080;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      margin-top: 5px;
+      font-size: 16px;
     }
+  }
 
-    #center {
-      width: 100%;
-      overflow: hidden;
+  #center {
+    width: 100%;
+    overflow: hidden;
 
-      #centerMain {
-        width: 300%;
-        margin-left: -100%;
+    #centerMain {
+      width: 300%;
+      margin-left: -100%;
 
-        #selectYearDiv {
+      #selectYearDiv {
+        float: left;
+        background-color: #fff;
+
+        div {
           float: left;
-          background-color: #fff;
+          text-align: center;
+          font-family: "微软雅黑";
+          font-size: 16px;
+          border-right: 1px solid #ccc;
+          border-bottom: 1px solid #ccc;
+          cursor: pointer;
+          color: #616161;
 
-          div {
-            float: left;
-            text-align: center;
-            font-family: "微软雅黑";
-            font-size: 16px;
-            border-right: 1px solid #ccc;
-            border-top: 1px solid #ccc;
-            border-bottom: 1px solid #ccc;
-            cursor: pointer;
-            color: #909090;
-
-
-            &:hover {
-              background-color: #bcbcbc;
-              font-weight: bold;
-            }
-          }
-
-          .currentYearSd {
-            color: #ff4400 !important;
-            //border-radius: 20px;
-            //border: 1px solid #379082;
+          &:hover {
+            background-color: #bcbcbc;
             font-weight: bold;
           }
         }
 
-        #centerCalendarMain {
+        .currentYearSd {
+          color: #ff4400 !important;
+          //border-radius: 20px;
+          //border: 1px solid #379082;
+          font-weight: bold;
+        }
+      }
+
+      #centerCalendarMain {
+        float: left;
+
+        #week {
+          width: 100%;
+          height: 30px;
+          border-bottom: 1px solid #ccc;
+        }
+
+        #Container {
+          overflow: hidden;
           float: left;
 
-          #Container {
-            overflow: hidden;
+          .dayItem {
             float: left;
 
-            .dayItem {
+            .item {
               float: left;
+              color: black;
+              text-align: center;
+              cursor: pointer;
+              margin: 0;
+              font-family: "微软雅黑";
+              font-size: 16px;
+              border-radius: 8px;
 
-              .item {
-                color: #333;
-                float: left;
-                text-align: center;
-                cursor: pointer;
-                margin: 0;
-                font-family: "微软雅黑";
-                font-size: 16px;
-                border-radius: 8px;
-
-                &:hover {
-                  color: #b9121b;
-                }
-              }
-
-              .itemBtn {
-                &:hover {
-                  font-weight: bold;
-                  //font-size: 17px;
-                  background-color: #bcbcbc;
-                }
-              }
-
-              .lastItem {
-                color: #d1c7b7 !important;
-              }
-
-              .currentItem {
-                border-radius: 20px;
-                border: 1px solid #379082;
-                font-weight: bold;
+              &:hover {
+                color: #b9121b;
               }
             }
-          }
-        }
 
-        #selectMonthDiv {
-          float: left;
-          background-color: #fff;
+            .itemBtn {
+              &:hover {
+                font-weight: bold;
+                //font-size: 17px;
+                background-color: #bcbcbc;
+              }
+            }
 
-          div {
-            color: #616161;
-            float: left;
-            text-align: center;
-            font-family: "微软雅黑";
-            font-size: 16px;
-            border-right: 1px solid #ccc;
-            border-top: 1px solid #ccc;
-            border-bottom: 1px solid #ccc;
-            cursor: pointer;
+            .lastItem {
+              color: #a39c8f !important;
+            }
 
-            &:hover {
-              background-color: #bcbcbc;
+            .currentItem {
+              border-radius: 20px;
+              border: 1px solid #379082;
               font-weight: bold;
             }
           }
+        }
+      }
 
-          .currentMontSd {
-            color: #ff4400 !important;
+      #selectMonthDiv {
+        float: left;
+        background-color: #fff;
+
+        div {
+          color: #616161;
+          float: left;
+          text-align: center;
+          font-family: "微软雅黑";
+          font-size: 16px;
+          border-right: 1px solid #ccc;
+          border-bottom: 1px solid #ccc;
+          cursor: pointer;
+
+          &:hover {
+            background-color: #bcbcbc;
             font-weight: bold;
           }
+        }
+
+        .currentMontSd {
+          color: #ff4400 !important;
+          font-weight: bold;
         }
       }
     }
@@ -579,5 +609,50 @@ aside {
         font-family: "微软雅黑";
       }
     }
+  }
+}
+
+/* date time select */
+
+#completed-at-label {
+  float: left;
+  display: block;
+  margin-right: 10px;
+}
+
+.date-time-select {
+  display: block;
+  width: auto;
+  select {
+    width: auto;
+  }
+}
+
+.schedule-footer {
+
+  .timestamp {
+    color: $gray-light;
+    display: block;
+    margin-left: 10px;
+    float: left;
+
+    ul {
+      li {
+        padding-bottom: 0px;
+        border: none;
+      }
+    }
+  }
+
+  .dropdown {
+    float: left;
+    margin-left: 5px;
+    margin-right: 10px;
+  }
+}
+
+.dropdown-menu {
+  .divider {
+    margin: 5px 0;
   }
 }

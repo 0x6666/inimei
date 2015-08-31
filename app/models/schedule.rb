@@ -1,6 +1,7 @@
 class Schedule < ActiveRecord::Base
 
   belongs_to :user
+  default_scope -> { order(planed_completed_at: :desc) }
 
   #validates
   validates :user_id, presence: true

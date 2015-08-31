@@ -1,0 +1,16 @@
+<ol class="schedules">
+  <% if @current_schedules.any? %>
+      <%= render @current_schedules %>
+  <% else %>
+      <% if @select_date && @select_date >= Time.now.beginning_of_day %>
+          <h4 class="schedules-none">No schedules yet! Create now?</h4>
+          <%= render 'shared/schedule_form', completed_at: @select_date %>
+      <% else %>
+          <h4 class="schedules-none">No schedules yet!</h4>
+      <% end %>
+  <% end %>
+</ol>
+
+<script type="text/javascript">
+    $("#flash-message").html("<%= escape_javascript(render 'shared/flash_message') %>")
+</script>

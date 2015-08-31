@@ -1,0 +1,2 @@
+$("#flash-message").html("<%= escape_javascript(render 'shared/flash_message') %>")
+$("#schedule-<%= @schedule.id%> .schedule-footer .dropdown").toggleClass('open')

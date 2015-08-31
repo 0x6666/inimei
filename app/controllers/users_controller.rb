@@ -64,7 +64,15 @@ class UsersController < ApplicationController
   end
 
   def schedules
-    @user = User.find(params[:id])
+    @user = current_user
+    date = params[:date]
+    @select_date = date.nil? ? Time.now : Time.new(date[:year], date[:month], date[:day]).end_of_day
+    @current_schedules = @user.schedules.where(planed_completed_at: @select_date.all_day)
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   private
