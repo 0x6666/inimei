@@ -67,7 +67,8 @@ class UsersController < ApplicationController
     @user = current_user
     date = params[:date]
     @select_date = date.nil? ? Time.now : Time.new(date[:year], date[:month], date[:day]).end_of_day
-    @current_schedules = @user.schedules.where(planed_completed_at: @select_date.all_day)
+    @current_schedules = @user.schedules.where(completed: false, planed_completed_at: @select_date.all_day)
+    @current_competed_schedules = @user.schedules.where(completed: true, planed_completed_at: @select_date.all_day)
 
     respond_to do |format|
       format.html

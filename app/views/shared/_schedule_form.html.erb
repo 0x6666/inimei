@@ -1,7 +1,7 @@
 <%= form_for(@user.schedules.build) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
 
-    <%= f.label 'Plan Completed at', id: 'completed-at-label' %>
+    <%= f.label 'Plans to complete in', id: 'completed-at-label' %>
     <div class="date-time-select">
       <% if completed_at.nil? %>
           <%= f.datetime_select :planed_completed_at %>
@@ -13,8 +13,8 @@
       <% end %>
     </div>
 
-    <%= f.text_field :title, placeholder: 'Title here...' %>
-    <%= f.text_area :content, placeholder: 'Compose new schedule...' %>
+    <%= f.text_field :title, class: 'form-control', placeholder: 'Title here...' %>
+    <%= f.text_area :content, class: 'form-control', placeholder: 'Compose new schedule...' %>
 
     <%= f.submit 'Create', class: 'btn btn-primary' %>
 <% end %>

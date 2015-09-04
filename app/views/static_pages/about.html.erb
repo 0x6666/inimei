@@ -7,11 +7,25 @@
   <div class="col-md-6 personal-info">
     <h4>Hello, I'm Yang Song, Welcome to my personal home page.</h4>
     <br>
-    <h4>Email: <a href="mailto:yangsongfwd@163.com">yangsongfwd@163.com</a></h4>
-    <h4>WeiBo: <a href="http://weibo.com/borrowedstory">BorrowedStory</a></h4>
-    <h4>QQ: <a href="tencent://message/?uin=1377047602&Site=&Menu=yes">1377047602</a></h4>
-    <% if logged_in? %>
-        <h4>Tel: 18666903921</h4>
-    <% end %>
+    <table>
+      <tr>
+        <th><h4>Email</h4></th>
+        <td><h4><a href="mailto:yangsongfwd@163.com">yangsongfwd@163.com</a></h4></td>
+      </tr>
+      <tr>
+        <th><h4>WeiBo</h4></th>
+        <td><h4><a href="http://weibo.com/borrowedstory">BorrowedStory</a></h4></td>
+      </tr>
+      <tr>
+        <th><h4>QQ</h4></th>
+        <td><h4><a href="tencent://message/?uin=1377047602&Site=&Menu=yes">1377047602</a></h4></td>
+      </tr>
+      <% if logged_in? %>
+          <tr>
+            <th><h4>Tel</h4></th>
+            <td><h4>18666903921</h4></td>
+          </tr>
+      <% end %>
+    </table>
   </div>
 </div>

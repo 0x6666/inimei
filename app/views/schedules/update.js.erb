@@ -1,2 +1,10 @@
 $("#flash-message").html("<%= escape_javascript(render 'shared/flash_message') %>")
-$("#schedule-<%= @schedule.id%> .schedule-footer .dropdown").toggleClass('open')
+$("#schedule-<%= @schedule.id%> .schedule-footer .btn-group").toggleClass('open')
+
+<%if @need_remove %>
+$("#schedule-<%= @schedule.id%>").animate({
+    height: "0px"
+}, 300, function () {
+    $(this).remove();
+});
+<%end%>

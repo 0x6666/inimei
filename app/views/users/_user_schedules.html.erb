@@ -1,16 +1,52 @@
-<ol class="schedules">
-  <% if @current_schedules.any? %>
+<div class="schedules-view">
+  <div class="view-head">
+    <span class="view-title"><%= @select_date.to_formatted_s(:date) %></span>
+    <span class="schedules-add-btn glyphicon glyphicon-plus" data-toggle="modal" data-target=".create-schedule" aria-hidden="true"></span>
+  </div>
+  <div class="view-body">
+    <ol class="schedules-not-competed schedules">
       <%= render @current_schedules %>
-  <% else %>
-      <% if @select_date && @select_date >= Time.now.beginning_of_day %>
-          <h4 class="schedules-none">No schedules yet! Create now?</h4>
-          <%= render 'shared/schedule_form', completed_at: @select_date %>
-      <% else %>
-          <h4 class="schedules-none">No schedules yet!</h4>
-      <% end %>
-  <% end %>
-</ol>
+    </ol>
+    <% if @current_competed_schedules && @current_competed_schedules.any? %>
+        <span class="glyphicon glyphicon-triangle-top competed-hidden-btn" aria-hidden="true"></span>
+        <ol class="schedules-competed schedules">
+          <%= render @current_competed_schedules %>
+        </ol>
+    <% end %>
+  </div>
+</div>
 
 <script type="text/javascript">
+    $(".competed-hidden-btn").click(function () {
+        $h = "0px";
+        var orgH = $(".schedules-competed").height();
+
+        $completed = $(".schedules-competed");
+        if ($(this).hasClass("glyphicon-triangle-bottom")) {
+            $completed.css("height", "0px");
+            $completed.show();
+            $h = orgH + "px";
+        } else {
+            $h = "0px";
+        }
+
+        $completed.animate({
+            height: $h
+        }, 300, function () {
+            $btn = $(".competed-hidden-btn");
+            if ($btn.hasClass("glyphicon-triangle-bottom")) {
+                $btn.css("margin-top", "0px");
+            } else {
+                $(this).hide();
+                $(this).css("height", "inherit");
+                $btn.css("margin-top", -$btn.height() + "px");
+            }
+
+            $btn.toggleClass("glyphicon-triangle-top");
+            $btn.toggleClass("glyphicon-triangle-bottom");
+
+        });
+    });
+
     $("#flash-message").html("<%= escape_javascript(render 'shared/flash_message') %>")
 </script>

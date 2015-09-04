@@ -9,6 +9,14 @@ class Schedule < ActiveRecord::Base
   validates :title, presence: true, if: :require_title_presence?
   validates :content, presence: true, if: :require_content_presence?
 
+  def complete
+    update_columns(completed: true, completed_at: Time.zone.now)
+  end
+
+  def uncomplete
+    update_columns(completed: false, completed_at: nil)
+  end
+
   private
   def require_title_presence?
     !self.content?

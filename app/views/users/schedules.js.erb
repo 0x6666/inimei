@@ -1,2 +1,3 @@
 
-$("#schedules_view").html("<%= escape_javascript(render('user_schedules')) %>")
+$(".schedules-view").replaceWith("<%= escape_javascript(render('user_schedules')) %>")
+$(".create-schedule").replaceWith("<%= escape_javascript(render('shared/create_schedule_dlg')) %>")
