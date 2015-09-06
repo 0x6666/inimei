@@ -7,7 +7,7 @@
           <%= f.datetime_select :planed_completed_at %>
       <% else %>
           <% now = Time.now %>
-          <%= f.datetime_select :planed_completed_at,
+          <%= f.date_select :planed_completed_at,
                                 default: completed_at,
                                 start_year: now.year %>
       <% end %>

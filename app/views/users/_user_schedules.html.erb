@@ -1,7 +1,10 @@
 <div class="schedules-view">
   <div class="view-head">
-    <span class="view-title"><%= @select_date.to_formatted_s(:date) %></span>
-    <span class="schedules-add-btn glyphicon glyphicon-plus" data-toggle="modal" data-target=".create-schedule" aria-hidden="true"></span>
+    <span class="view-title"><%= @select_date.to_formatted_s(:date) %>
+      <span class="schedules-add-btn glyphicon glyphicon-plus" data-toggle="modal" data-target=".create-schedule" aria-hidden="true">
+      </span>
+    </span>
+
   </div>
   <div class="view-body">
     <ol class="schedules-not-competed schedules">
@@ -26,8 +29,6 @@
             $completed.css("height", "0px");
             $completed.show();
             $h = orgH + "px";
-        } else {
-            $h = "0px";
         }
 
         $completed.animate({
@@ -36,9 +37,10 @@
             $btn = $(".competed-hidden-btn");
             if ($btn.hasClass("glyphicon-triangle-bottom")) {
                 $btn.css("margin-top", "0px");
+                $(this).removeAttr("style");
             } else {
+                $(this).removeAttr("style");
                 $(this).hide();
-                $(this).css("height", "inherit");
                 $btn.css("margin-top", -$btn.height() + "px");
             }
 
