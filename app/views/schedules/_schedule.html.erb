@@ -1,31 +1,34 @@
 <li id="schedule-<%= schedule.id %>">
+
   <% if schedule.title? %>
-      <h4 class="title"><%= schedule.title %></h4>
+      <h4 class="title"><%= schedule.title %>
+        <div class="schedule-footer">
+          <div class="btn-group">
+            <% if !schedule.completed? %>
+                <%= link_to 'Complete', complete_schedule_path(schedule), method: :post, class: 'btn btn-default' %>
+            <% else %>
+                <%= link_to 'Uncomplete', uncomplete_schedule_path(schedule), method: :post, class: 'btn btn-default' %>
+            <% end %>
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="caret"></span>
+              <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu">
+              <% if !schedule.completed? %>
+                  <li><%= link_to 'After one day', schedule_path(schedule, type: 'after-a-day'), remote: true, method: :patch %></li>
+                  <li><%= link_to 'After one week', schedule_path(schedule, type: 'after-a-week'), remote: true, method: :patch %></li>
+                  <li class="divider"></li>
+                  <li><%= link_to 'No plan', schedule_path(schedule, type: 'no-plan'), method: :patch %></li>
+              <% end %>
+              <li><%= link_to 'delete', schedule, method: :delete, remote: true, data: {confirm: 'You sure?'} %></li>
+            </ul>
+          </div>
+        </div>
+      </h4>
   <% end %>
+
   <% if schedule.content? %>
       <pre class="content"><%= schedule.content %></pre>
   <% end %>
 
-  <div class="schedule-footer">
-    <div class="btn-group">
-      <% if !schedule.completed? %>
-          <%= link_to 'Complete', complete_schedule_path(schedule), method: :post, class: 'btn btn-default' %>
-      <% else %>
-          <%= link_to 'Uncomplete', uncomplete_schedule_path(schedule), method: :post, class: 'btn btn-default' %>
-      <% end %>
-      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="caret"></span>
-        <span class="sr-only">Toggle Dropdown</span>
-      </button>
-      <ul class="dropdown-menu">
-        <% if !schedule.completed? %>
-            <li><%= link_to 'After one day', schedule_path(schedule, type: 'after-a-day'), remote: true, method: :patch %></li>
-            <li><%= link_to 'After one week', schedule_path(schedule, type: 'after-a-week'), remote: true, method: :patch %></li>
-            <li class="divider"></li>
-            <li><%= link_to 'No plan', schedule_path(schedule, type: 'no-plan'), method: :patch %></li>
-        <% end %>
-        <li><%= link_to 'delete', schedule, method: :delete, remote: true, data: {confirm: 'You sure?'} %></li>
-      </ul>
-    </div>
-  </div>
 </li>
