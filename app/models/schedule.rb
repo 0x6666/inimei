@@ -3,6 +3,8 @@ class Schedule < ActiveRecord::Base
   belongs_to :user
   default_scope -> { order(planed_completed_at: :desc) }
 
+  has_many :sub_schedules, dependent: :destroy
+
   validates :user_id, presence: true
   validates :title, presence: true, length: {maximum: 50}
 

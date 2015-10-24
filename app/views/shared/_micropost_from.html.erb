@@ -4,9 +4,9 @@
       <%= f.text_area :content, placeholder: 'Compose new micropost...' %>
     </div>
 
-    <div id="add_picture">
-      <span class="btn change" id="picture_input">Choose Picture
-        <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+    <div id="add_picture" class="input-picture">
+      <span class="btn input-picture-btn" id="picture_input">Choose Picture
+        <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png', class: 'input-picture-input' %>
       </span>
     </div>
 
@@ -14,31 +14,5 @@
 <% end %>
 
 <script type="text/javascript">
-  $('#micropost_picture').bind('change', function(){
-      size_in_megabytes = this.files[0].size/1024/1024;
-      if (size_in_megabytes > 5) {
-          alert('Maximum file size is 5MB, Please choose a smaller file.')
-      }
-      else
-      {
-          // 检查是否支持FileReader对象
-          if (typeof FileReader != 'undefined') {
-              var acceptedTypes = {
-                  'image/png': true,
-                  'image/jpeg': true,
-                  'image/gif': true
-              };
-              if (acceptedTypes[this.files[0].type] === true) {
-                  var reader = new FileReader();
-                  reader.onload = function (event) {
-                      var image = new Image();
-                      image.src = event.target.result;
-                      image.width = 100;
-                      document.getElementById('add_picture').insertBefore(image, document.getElementById('picture_input'));
-                  };
-                  reader.readAsDataURL(this.files[0]);
-              }
-          }
-      }
-  });
+  $('#micropost_picture').bind('change', micropost_picture_changed);
 </script>
