@@ -9,7 +9,11 @@ Things you may want to cover:
 
 * System dependencies
 
+    install ImageMagick
+
 * Configuration
+
+    env mail_psw: mail password
 
 * Database creation
 

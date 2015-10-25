@@ -27,7 +27,7 @@ Rails.application.configure do
       :domain => '163.com',
       :authentication => :login,
       :user_name => 'yangsongfwd@163.com',
-      :password => ''
+      :password => ENV['mail_psw']
   }
 
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
