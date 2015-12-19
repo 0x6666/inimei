@@ -20,9 +20,9 @@ micropost_picture_changed = function () {
                     image.width = 100;
                     document.getElementById('add_picture').insertBefore(image, document.getElementById('picture_input'));
 
-                    $content = document.getElementById('micropost_content');
-                    if ($content.value.length == 0) {
-                        $content.value = 'Shared picture.';
+                    var content = document.getElementById('micropost_content');
+                    if (content.value.length == 0) {
+                        content.value = 'Shared picture.';
                     }
                 };
                 reader.readAsDataURL(this.files[0]);
