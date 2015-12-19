@@ -4,10 +4,10 @@ class StaticPagesController < ApplicationController
       @micropost = current_user.microposts.build
       @feed_items = current_user.feed.paginate(page: params[:page])
     else
-      if first_visit?
-        mark_visited
+      #if first_visit?
+        #mark_visited
         redirect_to about_path
-      end
+      #end
     end
   end
 
