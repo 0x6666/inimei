@@ -15,6 +15,7 @@ gem 'bootstrap-will_paginate', '0.0.10'
 gem 'mini_magick', '3.8.0'
 gem 'mysql2', '0.3.19'
 gem 'carrierwave-qiniu', '0.1.8'
+gem 'coveralls', require: false
 
 
 group :doc do
@@ -25,6 +26,15 @@ group :development, :test do
   gem 'byebug', '3.4.0'
   gem 'web-console', '2.0.0.beta3'
   gem 'spring', '1.1.3'
+
+  gem 'responders', '~> 2.0'
+  gem "thin"   #check
+  gem 'pry'
+
+  if RUBY_PLATFORM.downcase.include?("darwin")
+    gem 'rb-fsevent'
+    gem 'growl'
+  end
 end
 
 group :test do

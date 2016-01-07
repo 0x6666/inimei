@@ -57,3 +57,5 @@ yangsong = User.find_by_email('yangsongfwd@163.com')
                              planed_completed_at: (index % 5).days.ago.to_datetime)
 
 end
+
+Monologue::User.create!({name: "Monologue", email: "monologue@example.com", password: "monologue", password_confirmation: "monologue"})

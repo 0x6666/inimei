@@ -27,3 +27,19 @@
 /public/uploads
 /public/assets
 
+pkg/
+spec/dummy/db/*.sqlite3
+spec/dummy/log/*.log
+spec/dummy/tmp/
+
+.sass-cache/
+coverage/
+
+.DS_Store
+
+*.lock
+
+.ruby-version
+.rbenv-version
+.rvmrc
+
