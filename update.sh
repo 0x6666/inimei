@@ -2,7 +2,7 @@
 
 git stash
 
-git pull
+git pull --rebase
 
 git stash pop
 

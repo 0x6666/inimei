@@ -1,6 +1,8 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+require File.expand_path('../../lib/monologue', __FILE__)
+
 #require 'carrierwave/orm/activerecord'
 
 # Require the gems listed in Gemfile, including any gems

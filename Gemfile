@@ -1,7 +1,7 @@
 source 'https://ruby.taobao.org'
 
 gem 'rails', '4.2.0'
-gem 'bcrypt', '3.1.7'
+gem "bcrypt", '~> 3.1.7'
 gem 'sass-rails', '5.0.0.beta1'
 gem 'uglifier', '2.5.3'
 gem 'coffee-rails', '4.1.0'
@@ -17,6 +17,11 @@ gem 'mysql2', '~>0.3.18'
 gem 'carrierwave-qiniu', '0.1.8'
 gem 'coveralls', require: false
 
+gem "truncate_html"
+gem 'rails-i18n'
+gem "ckeditor",'~> 4.1.1'
+gem 'select2-rails', '~> 3.2'
+gem "responders", '~> 2.1.0'
 
 group :doc do
   gem 'sdoc', '0.4.0'
@@ -27,7 +32,6 @@ group :development, :test do
   gem 'web-console', '2.0.0.beta3'
   gem 'spring', '1.1.3'
 
-  gem 'responders', '~> 2.0'
   gem "thin"   #check
   gem 'pry'
 
