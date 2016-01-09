@@ -1,5 +1,5 @@
 class Blog::BlogBaseController < ApplicationController
-    include Blog::ControllerHelpers::User
+    #include Blog::ControllerHelpers::User
 
     layout Blog::Config.layout if Blog::Config.layout # TODO: find a way to test that. It was asked in issue #54 (https://github.com/jipiboily/monologue/issues/54)
 
@@ -10,7 +10,7 @@ class Blog::BlogBaseController < ApplicationController
     end
 
     def all_tags
-      @tags = Blog::Tag.order('name').select{|t| t.frequency>0}
+      @tags = Blog::Tag.order('name').select { | t | t.frequency > 0}
       #could use minmax here but it's only supported with ruby > 1.9'
       @tags_frequency_min = @tags.map{|t| t.frequency}.min
       @tags_frequency_max = @tags.map{|t| t.frequency}.max
@@ -35,7 +35,7 @@ class Blog::BlogBaseController < ApplicationController
       posts = Blog::Post.published.limit(100)
       if posts.length > 0
         @archive_posts = posts.group_by {
-            |post| post.published_at.beginning_of_month.strftime("%Y %-m")
+            |post| post.published_at.beginning_of_month.strftime('%Y %-m')
         }
         @first_post_year = posts.last.published_at.year
       end

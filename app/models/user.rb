@@ -19,6 +19,9 @@ class User < ActiveRecord::Base
   #schedules
   has_many :schedules, dependent: :destroy
 
+  #blogs
+  has_many :posts
+
   before_save :downcase_email
   before_create :create_activation_digest
 
@@ -95,6 +98,12 @@ class User < ActiveRecord::Base
 
   def following?(other)
     following.include?(other)
+  end
+
+  def can_delete?(user)
+    return false if self==user
+    return false if user.posts.any?
+    true
   end
 
   private

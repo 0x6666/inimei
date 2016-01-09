@@ -10,7 +10,7 @@ module Monologue
 
       def copy_views
         view_directory :layouts
-        view_directory :monologue
+        view_directory :blog
       end
 
       protected

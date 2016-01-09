@@ -26,8 +26,32 @@ Rails.application.routes.draw do
       post :complete, :uncomplete
     end
   end
-  
-  mount Monologue::Engine, at: '/blog'
+
+  namespace :blog do
+    root to:  'posts#index'
+    get '/' , to: 'posts#index', as: 'blog_root'
+    get '/page/:page', to:  'posts#index', as:  'posts_page'
+    get '/feed' => 'posts#feed', as:  'feed', defaults: {format: :rss}
+
+    get '/tags/:tag' =>'tags#show', as: 'tags_page'
+
+    namespace :admin, path: 'blog' do
+      get '/' => 'posts#index', as:  '' # responds to admin_url and admin_path
+      get '/page/:page', to:  'posts#index', as:  'posts_page'
+      get 'logout' => 'sessions#destroy'
+      get 'login' => 'sessions#new'
+      resources :sessions
+      resources :posts
+      resources :users
+      get 'comments' => 'comments#show', as: 'comments'
+
+      match '/post/preview'=>'posts#preview', :as=>'post_preview', :via => [:put, :post]
+    end
+
+    get '*post_url' => 'posts#show', as:  'post'
+    #mount Monologue::Engine, at: '/blog'
+  end
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

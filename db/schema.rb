@@ -11,7 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150918132630) do
+ActiveRecord::Schema.define(version: 20160107140620) do
+
+  create_table "blog_posts", force: :cascade do |t|
+    t.boolean  "published",    limit: 1
+    t.integer  "user_id",      limit: 4
+    t.string   "title",        limit: 255
+    t.text     "content",      limit: 65535
+    t.string   "url",          limit: 255
+    t.datetime "published_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "blog_posts", ["published_at"], name: "index_blog_posts_on_published_at", using: :btree
+  add_index "blog_posts", ["url"], name: "index_blog_posts_on_url", unique: true, using: :btree
+
+  create_table "blog_taggings", force: :cascade do |t|
+    t.integer "post_id", limit: 4
+    t.integer "tag_id",  limit: 4
+  end
+
+  add_index "blog_taggings", ["post_id"], name: "index_blog_taggings_on_post_id", using: :btree
+  add_index "blog_taggings", ["tag_id"], name: "index_blog_taggings_on_tag_id", using: :btree
+
+  create_table "blog_tags", force: :cascade do |t|
+    t.string "name", limit: 255
+  end
+
+  add_index "blog_tags", ["name"], name: "index_blog_tags_on_name", using: :btree
 
   create_table "microposts", force: :cascade do |t|
     t.text     "content",    limit: 65535

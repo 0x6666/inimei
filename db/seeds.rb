@@ -58,4 +58,4 @@ yangsong = User.find_by_email('yangsongfwd@163.com')
 
 end
 
-Monologue::User.create!({name: "Monologue", email: "monologue@example.com", password: "monologue", password_confirmation: "monologue"})
+#Blog::User.create!({name: 'yangsong', email: 'yangsongfwd@163.com', password: '123456', password_confirmation: '123456'})

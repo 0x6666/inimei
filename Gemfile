@@ -1,8 +1,8 @@
 source 'https://ruby.taobao.org'
 
 gem 'rails', '4.2.0'
-gem "bcrypt", '~> 3.1.7'
-gem 'sass-rails', '5.0.0.beta1'
+gem 'bcrypt', '~> 3.1.7'
+gem 'sass-rails','~> 5.0.0'
 gem 'uglifier', '2.5.3'
 gem 'coffee-rails', '4.1.0'
 gem 'jquery-rails', '4.0.0.beta2'
@@ -17,11 +17,13 @@ gem 'mysql2', '~>0.3.18'
 gem 'carrierwave-qiniu', '0.1.8'
 gem 'coveralls', require: false
 
-gem "truncate_html"
+gem 'truncate_html'
 gem 'rails-i18n'
-gem "ckeditor",'~> 4.1.1'
+gem 'ckeditor','~> 4.1.1'
 gem 'select2-rails', '~> 3.2'
-gem "responders", '~> 2.1.0'
+gem 'responders', '~> 2.1.0'
+gem 'bootstrap-datepicker-rails'
+
 
 group :doc do
   gem 'sdoc', '0.4.0'
@@ -30,15 +32,15 @@ end
 group :development, :test do
   gem 'byebug', '3.4.0'
   gem 'web-console', '2.0.0.beta3'
-  gem 'spring', '1.1.3'
+#  gem 'spring', '1.1.3'
 
-  gem "thin"   #check
+#  gem "thin"   #check
   gem 'pry'
 
-  if RUBY_PLATFORM.downcase.include?("darwin")
-    gem 'rb-fsevent'
-    gem 'growl'
-  end
+  #if RUBY_PLATFORM.downcase.include?("darwin")
+    #gem 'rb-fsevent'
+    #gem 'growl'
+  #end
 end
 
 group :test do
