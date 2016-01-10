@@ -1,4 +1,3 @@
-# This migration comes from monologue (originally 20120612015727)
 class DeleteJoinPostsTags < ActiveRecord::Migration
   def up
     drop_table :blog_posts_tags

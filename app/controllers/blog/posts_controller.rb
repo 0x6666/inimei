@@ -1,4 +1,5 @@
 class Blog::PostsController < Blog::BlogBaseController
+
   def index
     @page = params[:page].nil? ? 1 : params[:page]
     @posts = Blog::Post.page(@page).includes(:user).published

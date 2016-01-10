@@ -1,5 +1,5 @@
 es:
-  monologue:
+  blog:
     posts:
       pagination:
         older_posts: "Artículos más antiguos"
@@ -110,11 +110,11 @@ es:
           logged_in: "Has iniciado sesión!"
           logged_out: "Has cerrado sesión!"
   layouts:
-    monologue:
+    blog:
       admin:
         nav_bar:
-          add_a_monologue: "Añadir un artículo"
-          list_monologues: "Lista de artículos"
+          add_a_blog: "Añadir un artículo"
+          list_blogs: "Lista de artículos"
           comments: "Commentarios"
           cache: "Gestionar cache"
           edit_user_info: "Mi cuenta"
@@ -123,7 +123,7 @@ es:
           users: "Usuarios"
   activerecord:
     attributes:
-      monologue/user:
+      blog/user:
         password_digest: "Confirmación de contraseña"
     errors:
       format: "%{message}"
@@ -132,7 +132,7 @@ es:
     errors:
       models:
         full_messages: "%{message}"
-        monologue/post:
+        blog/post:
           blank: "%{attribute} es obligatorio"
           taken: "%{attribute} está en uso por otro artículo"
           attributes:
@@ -140,7 +140,7 @@ es:
               blank: "'Publicado en' es obligatorio"
             url:
               start_with_slash: "URL no puede empezar con '/'"
-        monologue/user:
+        blog/user:
           blank: "%{attribute} es obligatorio"
           taken: "%{attribute} ya está en uso"
           attributes:

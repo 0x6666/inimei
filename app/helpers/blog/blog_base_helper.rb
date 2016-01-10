@@ -1,12 +1,11 @@
 module Blog::BlogBaseHelper
-    #include Monologue::Engine.routes.url_helpers if ENV["RAILS_ENV"] == "test" # TODO: try and see why this is needed for specs to pass
+    #include Blog::Engine.routes.url_helpers if ENV["RAILS_ENV"] == "test" # TODO: try and see why this is needed for specs to pass
     #Why aren't they loaded by default?
     include Blog::HtmlHelper
     include Blog::TagsHelper
 
     def blog_admin_form_for(object, options = {}, &block)
       options[:builder] = BlogAdminFormBuilder
-      debugger
       form_for(object, options, &block)
     end
 

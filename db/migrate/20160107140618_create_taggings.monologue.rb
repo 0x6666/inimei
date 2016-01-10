@@ -1,4 +1,3 @@
-# This migration comes from monologue (originally 20120612013442)
 class CreateTaggings < ActiveRecord::Migration
   def change
     create_table :blog_taggings do |t|

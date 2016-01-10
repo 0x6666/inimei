@@ -18,7 +18,7 @@ class Blog::Admin::PostsController < Blog::Admin::BaseController
     @post.user_id = current_user.id
     @post.published_at = Time.zone.now
     # render it exactly as it would display when live.
-    render '/blog/posts/show', layout: Blog::Config.layout || '/layouts/monologue/application'
+    render '/blog/posts/show', layout: Blog::Config.layout || '/layouts/blog/application'
   end
 
   def create
@@ -45,9 +45,9 @@ class Blog::Admin::PostsController < Blog::Admin::BaseController
   def destroy
     post = Blog::Post.find(params[:id])
     if post.destroy
-      redirect_to admin_posts_path, notice:  I18n.t('blog.admin.posts.delete.removed')
+      redirect_to blog_admin_posts_path, notice:  I18n.t('blog.admin.posts.delete.removed')
     else
-      redirect_to admin_posts_path, alert: I18n.t('blog.admin.posts.delete.failed')
+      redirect_to blog_admin_posts_path, alert: I18n.t('blog.admin.posts.delete.failed')
     end
   end
 
@@ -62,10 +62,10 @@ private
     else
       flash[:notice] =  I18n.t("blog.admin.posts.#{params[:action]}.saved")
     end
-    redirect_to edit_admin_post_path(@post)
+    redirect_to edit_blog_admin_post_path(@post)
   end
 
   def post_params
-    params.require(:post).permit(:published, :tag_list,:title,:content,:url,:published_at)
+    params.require(:blog_post).permit(:published, :tag_list,:title,:content,:url,:published_at)
   end
 end

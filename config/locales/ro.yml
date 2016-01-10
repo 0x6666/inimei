@@ -1,5 +1,5 @@
 ro:
-  monologue:
+  blog:
     posts:
       pagination:
         older_posts: "Articole mai vechi"
@@ -98,11 +98,11 @@ ro:
           logged_in: "Autentificat!"
           logged_out: "La revedere!"
   layouts:
-    monologue:
+    blog:
       admin:
         nav_bar:
-          add_a_monologue: "Adaugati articol"
-          list_monologues: "Lista articole"
+          add_a_blog: "Adaugati articol"
+          list_blogs: "Lista articole"
           comments: "Comentarii"
           cache: "Gestionati cache"
           edit_user_info: "Contul meu"
@@ -111,7 +111,7 @@ ro:
           users: "TODO Users"
   activerecord:
     attributes:
-      monologue/user:
+      blog/user:
         password_digest: "TODO Password confirmation"
     errors:
       format: "%{message}"
@@ -120,7 +120,7 @@ ro:
     errors:
       models:
         full_messages: "%{message}"
-        monologue/post:
+        blog/post:
           blank: "%{attribute} este necesar"
           taken: "%{attribute}-ul este deja folosit"
           attributes:
@@ -128,7 +128,7 @@ ro:
               blank: "'Published at' este necesar"
             url:
               start_with_slash: "URL-ul nu poate incepe cu slash ('/')"
-        monologue/user:
+        blog/user:
           blank: "%{attribute} este necesar"
           taken: "TODO %{attribute} has already been taken"
           attributes:

@@ -1,7 +1,7 @@
-<% if Monologue::Config.sidebar %>
+<% if Blog::Config.sidebar %>
 <aside class="sidebar four columns">
-   <% Monologue::Config.sidebar.each do |ext| %>
-     <%= render partial: "monologue/sidebar/#{ext}" %>
+   <% Blog::Config.sidebar.each do |ext| %>
+     <%= render partial: "blog/sidebar/#{ext}" %>
    <% end %>
 </aside>
 <% end %>

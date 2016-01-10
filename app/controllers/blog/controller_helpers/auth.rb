@@ -4,7 +4,7 @@ module Blog
   module ControllerHelpers
     module Auth
       extend ActiveSupport::Concern
-      include SessionsHelper# Monologue::ControllerHelpers::User
+      include SessionsHelper
 
       included do
         before_filter :authenticate_user!

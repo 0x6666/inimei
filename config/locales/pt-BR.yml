@@ -1,5 +1,5 @@
 pt-BR:
-  monologue:
+  blog:
     posts:
       pagination:
         older_posts: "Posts antigos"
@@ -98,11 +98,11 @@ pt-BR:
           logged_in: "Login efetuado com sucesso!"
           logged_out: "Logout efetuado com sucesso!"
   layouts:
-    monologue:
+    blog:
       admin:
         nav_bar:
-          add_a_monologue: "Criar post"
-          list_monologues: "Listar posts"
+          add_a_blog: "Criar post"
+          list_blogs: "Listar posts"
           comments: "Comentários"
           cache: "Gerenciar cache"
           edit_user_info: "Minha conta"
@@ -111,7 +111,7 @@ pt-BR:
           users: "TODO Users"
   activerecord:
     attributes:
-      monologue/user:
+      blog/user:
         password_digest: "TODO Password confirmation"
     errors:
       format: "%{message}"
@@ -120,7 +120,7 @@ pt-BR:
     errors:
       models:
         full_messages: "%{message}"
-        monologue/post:
+        blog/post:
           blank: "%{attribute} é obrigatório"
           taken: "%{attribute} já utilizada por outro post"
           attributes:
@@ -128,7 +128,7 @@ pt-BR:
               blank: "'Data de publicação' é obrigatório"
             url:
               start_with_slash: "URL não pode começar com '/'"
-        monologue/user:
+        blog/user:
           blank: "%{attribute} é obrigatório"
           taken: "TODO %{attribute} has already been taken"
           attributes:

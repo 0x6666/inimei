@@ -7,19 +7,19 @@
 <% end %>
 
 <article>
-  <%= render partial: 'monologue/posts/post_header', locals: {post: @post }%>
-  <div class="content" data-monologue="content">
+  <%= render partial: 'blog/posts/post_header', locals: {post: @post }%>
+  <div class="content" data-blog="content">
     <%= raw @post.content %>
   </div>
 
-	<div class="tags" data-monologue="tags">
+	<div class="tags" data-blog="tags">
     <%= render @post.tags %>
   </div>
 
-  <%= render "monologue/posts/social_sharing" %>
+  <%= render "blog/posts/social_sharing" %>
 
   <div id="disqus_thread"></div>
-  <%= render 'layouts/monologue/application/disqus_embed' %>
+  <%= render 'layouts/blog/application/disqus_embed' %>
   <noscript>Please enable JavaScript to view the comments.</noscript>
 </article>
 

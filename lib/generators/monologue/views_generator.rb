@@ -1,9 +1,9 @@
 require "rails/generators/base"
 
-module Monologue
+module Blog
   module Generators
     class ViewsGenerator < Rails::Generators::Base
-      desc "Copies Monologue views to your application."
+      desc "Copies Blog views to your application."
       argument :scope, required: false, default: nil,
                        desc: "The scope to copy views to"
       source_root File.expand_path("../../../../app/views", __FILE__)

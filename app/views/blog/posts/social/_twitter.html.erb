@@ -1,8 +1,8 @@
-<% if Monologue::Config.twitter_username.present? %>
+<% if Blog::Config.twitter_username.present? %>
   <a href="https://twitter.com/share" class="twitter-share-button"
-     data-lang="<%= Monologue::Config.twitter_locale || "en" %>"
+     data-lang="<%= Blog::Config.twitter_locale || "en" %>"
      data-url="<%= request.protocol %><%= request.host_with_port %><%= request.path.gsub("//", "/") %>"
-     data-via="<%= Monologue::Config.twitter_username %>"
+     data-via="<%= Blog::Config.twitter_username %>"
      data-text="<%= @post.title %>"
      data-count="horizontal">Tweet</a>
 

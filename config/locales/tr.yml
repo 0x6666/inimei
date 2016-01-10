@@ -1,5 +1,5 @@
 tr:
-  monologue:
+  blog:
     posts:
       pagination:
         older_posts: "Eski Gönderiler"
@@ -98,11 +98,11 @@ tr:
           logged_in: "Oturum açıldı!"
           logged_out: "Çıkış yapıldı!"
   layouts:
-    monologue:
+    blog:
       admin:
         nav_bar:
-          add_a_monologue: "Monolog ekle"
-          list_monologues: "Monolog listesi"
+          add_a_blog: "Monolog ekle"
+          list_blogs: "Monolog listesi"
           comments: "Yorumlar"
           cache: "Ön belleği yönet"
           edit_user_info: "Hesbım"
@@ -111,7 +111,7 @@ tr:
           users: "Kullanıcılar"
   activerecord:
     attributes:
-      monologue/user:
+      blog/user:
         password_digest: "Şifre onayı"
     errors:
       format: "%{message}"
@@ -120,7 +120,7 @@ tr:
     errors:
       models:
         full_messages: "%{message}"
-        monologue/post:
+        blog/post:
           blank: "%{attribute} gereklidir"
           taken: "%{attribute} zaten başka bir gönderide kullanılmakta"
           attributes:
@@ -129,7 +129,7 @@ tr:
             url:
               start_with_slash: "URL ('/') ile başlayamaz"
 
-        monologue/user:
+        blog/user:
           blank: "%{attribute} gereklidir"
           taken: "%{attribute} zaten kullanılmakta"
           attributes:

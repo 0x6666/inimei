@@ -28,14 +28,15 @@ Rails.application.routes.draw do
   end
 
   namespace :blog do
-    root to:  'posts#index'
-    get '/' , to: 'posts#index', as: 'blog_root'
+    root 'posts#index'
+    #get '/' => 'posts#index', as: 'root'
     get '/page/:page', to:  'posts#index', as:  'posts_page'
     get '/feed' => 'posts#feed', as:  'feed', defaults: {format: :rss}
 
     get '/tags/:tag' =>'tags#show', as: 'tags_page'
 
-    namespace :admin, path: 'blog' do
+    #namespace :admin, path: 'admin' do
+    namespace :admin do
       get '/' => 'posts#index', as:  '' # responds to admin_url and admin_path
       get '/page/:page', to:  'posts#index', as:  'posts_page'
       get 'logout' => 'sessions#destroy'
@@ -49,7 +50,7 @@ Rails.application.routes.draw do
     end
 
     get '*post_url' => 'posts#show', as:  'post'
-    #mount Monologue::Engine, at: '/blog'
+    #mount Blog::Engine, at: '/blog'
   end
 
 

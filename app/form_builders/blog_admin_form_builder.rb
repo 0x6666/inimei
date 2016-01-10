@@ -2,7 +2,6 @@ class BlogAdminFormBuilder < ActionView::Helpers::FormBuilder
   delegate :content_tag, :tag, to: :@template
 
   %w[text_field text_area password_field collection_select select file_field].each do |method_name|
-    debugger
     define_method(method_name) do |name, *args|
       content_tag :div, class:  'field' do
         field_label(name, *args) + super(name, *args)
@@ -11,7 +10,6 @@ class BlogAdminFormBuilder < ActionView::Helpers::FormBuilder
   end
 
   def check_box(name, *args)
-    debugger
     options = args.extract_options!
     required = object.class.validators_on(name).any? { |v| v.kind_of? ActiveModel::Validations::PresenceValidator }
     content_tag :label, class:  (required ? 'required checkbox inline' : 'checkbox inline') do
@@ -20,7 +18,6 @@ class BlogAdminFormBuilder < ActionView::Helpers::FormBuilder
   end
 
   def collection_check_boxes(attribute, records, record_id, record_name)
-    debugger
     content_tag :div, class:  'field' do
       @template.hidden_field_tag("#{object_name}[#{attribute}][]") +
       records.map do |record|
@@ -32,14 +29,12 @@ class BlogAdminFormBuilder < ActionView::Helpers::FormBuilder
   end
 
   def submit(*args)
-    debugger
     content_tag :div, class:  'form-actions' do
       super
     end
   end
 
   def error_messages
-    debugger
     if object.errors.full_messages.any?
       content_tag(:div, class: 'alert alert-error error_messages') do
         content_tag(:strong, 'Invalid Fields') +
@@ -55,7 +50,6 @@ class BlogAdminFormBuilder < ActionView::Helpers::FormBuilder
   private
 
     def field_label(name, *args)
-      debugger
       options = args.extract_options!
       required = object.class.validators_on(name).any? { |v| v.kind_of? ActiveModel::Validations::PresenceValidator }
       if options[:id]
@@ -66,7 +60,6 @@ class BlogAdminFormBuilder < ActionView::Helpers::FormBuilder
     end
 
     def objectify_options(options)
-      debugger
       super.except(:label)
     end
 end

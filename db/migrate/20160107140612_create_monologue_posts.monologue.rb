@@ -1,5 +1,4 @@
-# This migration comes from monologue (originally 20120120193907)
-class CreateMonologuePosts < ActiveRecord::Migration
+class CreateBlogPosts < ActiveRecord::Migration
   def change
     create_table :blog_posts do |t|
       t.boolean :published

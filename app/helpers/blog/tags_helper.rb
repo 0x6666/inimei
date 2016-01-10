@@ -5,7 +5,7 @@ module Blog
     NUMBER_OF_LABEL_SIZES = 5
 
     def tag_url(tag)
-      "#{Blog::Engine.routes.url_helpers.root_path}tags/#{URI.encode(tag.name.mb_chars.to_s.downcase)}"
+      "#{blog_root_path}/tags/#{URI.encode(tag.name.mb_chars.to_s.downcase)}"
     end
 
     def label_for_tag(tag, min, max)
