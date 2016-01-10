@@ -39,9 +39,6 @@ Rails.application.routes.draw do
     namespace :admin do
       get '/' => 'posts#index', as:  '' # responds to admin_url and admin_path
       get '/page/:page', to:  'posts#index', as:  'posts_page'
-      get 'logout' => 'sessions#destroy'
-      get 'login' => 'sessions#new'
-      resources :sessions
       resources :posts
       resources :users
       get 'comments' => 'comments#show', as: 'comments'

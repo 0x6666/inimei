@@ -20,8 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
-  monologue:
+  blog:
     posts:
       pagination:
         older_posts: "Older posts"
@@ -82,18 +81,18 @@ en:
           status: "Published ?"
           author: "Author"
         new:
-          header: "New monologue"
+          header: "New blog"
         create:
-          saved: "Monologue created"
-          saved_with_future_date_and_cache: "Monologue created: posts with a future publication date will not be shown unless cache is cleared on that same day. Cache will most probably be generated before that and won't be refreshed automatically."
+          saved: "Blog created"
+          saved_with_future_date_and_cache: "Blog created: posts with a future publication date will not be shown unless cache is cleared on that same day. Cache will most probably be generated before that and won't be refreshed automatically."
         edit:
           header: "Edit"
         update:
-          saved_with_future_date_and_cache: "Monologue saved: posts with a future publication date will not be shown unless cache is cleared on that same day. Cache will most probably be generated before that and won't be refreshed automatically."
-          saved: "Monologue saved"
+          saved_with_future_date_and_cache: "Blog saved: posts with a future publication date will not be shown unless cache is cleared on that same day. Cache will most probably be generated before that and won't be refreshed automatically."
+          saved: "Blog saved"
         delete:
-          removed: "Monologue removed"
-          fail: "Failed to remove monologue!"
+          removed: "Blog removed"
+          fail: "Failed to remove blog!"
         form:
           title: "Title"
           content: "Content"
@@ -120,20 +119,25 @@ en:
           logged_in: "Logged in!"
           logged_out: "Logged out!"
   layouts:
-    monologue:
+    blog:
       admin:
         nav_bar:
-          add_a_monologue: "Add a monologue"
-          list_monologues: "List of monologues"
+          add_a_blog: "Add a blog"
+          list_blogs: "List of blogs"
           comments: "Comments"
           cache: "Manage cache"
           edit_user_info: "My account"
           settings: "Settings"
           log_out: "Log out"
+          log_in: "Log In"
           users: "Users"
+          home: "Home"
+          profile: "Profile"
+          setting: "Setting"
+          schedules: "Schedules"
   activerecord:
     attributes:
-      monologue/user:
+      blog/user:
         password_digest: "Password confirmation"
     errors:
       format: "%{message}"
@@ -142,7 +146,7 @@ en:
     errors:
       models:
         full_messages: "%{message}"
-        monologue/post:
+        blog/post:
           blank: "%{attribute} is required"
           taken: "%{attribute} is already used by another post"
           attributes:
@@ -150,7 +154,7 @@ en:
               blank: "'Published at' is required"
             url:
               start_with_slash: "URL can't start with a slash ('/')"
-        monologue/user:
+        blog/user:
           blank: "%{attribute} is required"
           taken: "%{attribute} has already been taken"
           attributes:

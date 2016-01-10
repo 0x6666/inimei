@@ -7,7 +7,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap.min
-//= require bootstrap-datepicker
+// require bootstrap-datepicker
 // require bootstrap-datepicker-fr
 // require bootstrap-datepicker-pt
 // require bootstrap-datepicker-es

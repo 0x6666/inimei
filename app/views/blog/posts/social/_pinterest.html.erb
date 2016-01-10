@@ -1,8 +1,8 @@
 <% if Blog::Config.use_pinterest.presence %>
-<%= link_to"Pin It",
+<%= link_to 'Pin It',
              "http://pinterest.com/pin/create/button/?url=#{@post.url}",
-             :class => "pin-it-button",
-             "count-layout" => "none" %>
+             :class => 'pin-it-button',
+             'count-layout' => 'none' %>
 
 <script type="text/javascript">
   (function (d) {

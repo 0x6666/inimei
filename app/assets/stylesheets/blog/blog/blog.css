@@ -180,7 +180,7 @@ a.social {
   font-weight: bold;
   line-height: 50px;
   color: #181818;
-  font-family: "Georgia", "Times New Roman", Helvetica, Arial, sans-serif;
+  font-family: "Georgia", "Times New Roman", "Helvetica", "Arial", "sans-serif";
   display: block;
 }
 

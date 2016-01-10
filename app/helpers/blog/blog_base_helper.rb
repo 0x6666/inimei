@@ -14,11 +14,11 @@ module Blog::BlogBaseHelper
     end
 
     def rss_head_link
-      tag('link', href: feed_url, rel: 'alternate', title: 'RSS', type: 'application/rss+xml')
+      tag('link', href: blog_feed_url, rel: 'alternate', title: 'RSS', type: 'application/rss+xml')
     end
 
     def rss_icon
-      social_icon('rss', feed_url, Blog::Config.show_rss_icon)
+      social_icon('rss', blog_feed_url, Blog::Config.show_rss_icon)
     end
 
     def github_icon
@@ -33,13 +33,17 @@ module Blog::BlogBaseHelper
       social_icon('linkedin', Blog::Config.linkedin_url, Blog::Config.linkedin_url)
     end
 
+    def weibo_icon
+      social_img('weibo', "http://weibo.com/#{Blog::Config.weibo_name}", 'weibo.png')
+    end
+
     def googleplus_icon
       social_icon('google-plus', Blog::Config.google_plus_account_url, Blog::Config.google_plus_account_url)
     end
 
-    def facebook_icon
-      social_icon('facebook', Blog::Config.facebook_url, Blog::Config.facebook_url)
-    end
+    #def facebook_icon
+    # social_icon('facebook', Blog::Config.facebook_url, Blog::Config.facebook_url)
+    #end
 
     def absolute_image_url(url)
       return url if url.starts_with? 'http'
@@ -53,4 +57,10 @@ module Blog::BlogBaseHelper
         end
       end
     end
-  end
+
+    def social_img(foundicon, url, img)
+      content_tag :a, href: url, class: 'social', target: '_blank' do
+        image_tag img, class: 'social-img'
+      end
+    end
+end

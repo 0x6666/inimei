@@ -1,7 +1,6 @@
 class Blog::BlogBaseController < ApplicationController
-    #include Blog::ControllerHelpers::User
 
-    layout Blog::Config.layout if Blog::Config.layout # TODO: find a way to test that. It was asked in issue #54 (https://github.com/jipiboily/monologue/issues/54)
+    layout 'layouts/blog/application'
 
     before_filter :recent_posts, :all_tags, :archive_posts
 

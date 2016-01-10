@@ -1,7 +1,7 @@
 class Blog::Admin::PostsController < Blog::Admin::BaseController
   respond_to :html
   before_filter :load_post, only: [:edit, :update]
-  
+
   def index
     @page = params[:page].nil? ? 1 : params[:page]
     @posts = Blog::Post.listing_page(@page).includes(:user)
@@ -24,6 +24,7 @@ class Blog::Admin::PostsController < Blog::Admin::BaseController
   def create
     @post = Blog::Post.new post_params
     @post.user_id = current_user.id
+    @post.published_at = Time.zone.now
     if @post.save
       prepare_flash_and_redirect_to_edit()
     else
@@ -66,6 +67,6 @@ private
   end
 
   def post_params
-    params.require(:blog_post).permit(:published, :tag_list,:title,:content,:url,:published_at)
+    params.require(:blog_post).permit(:published, :tag_list,:title,:content,:url)
   end
 end

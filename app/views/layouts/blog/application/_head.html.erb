@@ -1,19 +1,19 @@
-<%= render "layouts/blog/application/title" %>
+<%= render 'layouts/blog/application/title' %>
 <meta charset="utf-8" />
-<%= render "layouts/blog/application/meta_description" %>
-<%= render "layouts/blog/application/fb_open_graph" %>
-<%= render "layouts/blog/application/twitter_cards" %>
+<%= render 'layouts/blog/application/meta_description' %>
+<!-- %= render 'layouts/blog/application/fb_open_graph' % -->
+<!-- %= render 'layouts/blog/application/twitter_cards' % -->
 <meta name="keyword" content="<%=Blog::Config.meta_keyword%>">
 
 <meta http-equiv="content-type" content="text/html;charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-<%= stylesheet_link_tag    "blog/blog/application" %>
-<%= javascript_include_tag "blog/blog/application" %>
+<%= stylesheet_link_tag    'blog/blog/application' %>
+<%= javascript_include_tag 'blog/blog/application' %>
 
 <!-- Mobile Specific Metas
 ================================================== -->
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <%= rss_head_link %>
-<%= render "layouts/blog/application/google_analytics" %>
+<!-- %= render 'layouts/blog/application/google_analytics' % -->

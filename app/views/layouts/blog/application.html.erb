@@ -10,9 +10,9 @@
   <div class="container">
     <header class="main-header sixteen columns clearfix">
       <%= rss_icon %>
-      <h1><a href="<%= root_path %>"><%=Blog::Config.site_name%></a></h1>
+      <h1><a href="<%= blog_root_path %>"><%=Blog::Config.site_name%></a></h1>
       <h2><%=Blog::Config.site_subtitle%></h2>
-      <%= render partial: "layouts/blog/application/social_icons" %>
+      <%= render partial: 'layouts/blog/application/social_icons' %>
     </header>
 
     <div class="content twelve columns">
@@ -25,14 +25,15 @@
       <%= yield %>
     </div>
 
-      <%= render 'layouts/blog/application/sidebar' %>
+    <%= render 'layouts/blog/application/sidebar' %>
+
   </div>
   <% if content_for?(:footer) %>
     <footer>
       <%= yield :footer %>
     </footer>
   <% end %>
-  <%= render 'layouts/blog/application/disqus' %>
-  <%= render 'layouts/blog/application/gauge_analytics' %>
+  <!-- %= render 'layouts/blog/application/disqus' % -->
+  <!--%= render 'layouts/blog/application/gauge_analytics' %-->
 </body>
 </html>

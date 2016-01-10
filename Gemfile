@@ -22,7 +22,7 @@ gem 'rails-i18n'
 gem 'ckeditor','~> 4.1.1'
 gem 'select2-rails', '~> 3.2'
 gem 'responders', '~> 2.1.0'
-gem 'bootstrap-datepicker-rails'
+#gem 'bootstrap-datepicker-rails'
 
 
 group :doc do
