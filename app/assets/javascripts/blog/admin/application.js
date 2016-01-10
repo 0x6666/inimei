@@ -7,11 +7,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap.min
-// require bootstrap-datepicker
-// require bootstrap-datepicker-fr
-// require bootstrap-datepicker-pt
-// require bootstrap-datepicker-es
 //= require ckeditor/init
-//= require blog/admin/ckeditor-config
 //= require blog/admin/posts
 //= require select2

@@ -15,7 +15,7 @@ gem 'bootstrap-will_paginate', '0.0.10'
 gem 'mini_magick', '3.8.0'
 gem 'mysql2', '~>0.3.18'
 gem 'carrierwave-qiniu', '0.1.8'
-gem 'coveralls', require: false
+#gem 'coveralls', require: false
 
 gem 'truncate_html'
 gem 'rails-i18n'

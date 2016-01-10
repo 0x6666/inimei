@@ -1,12 +1,12 @@
-<section data-tags="<%= post.tags.map(&:name).join(' ') %>">
+<section class="prev-blog" data-tags="<%= post.tags.map(&:name).join(' ') %>">
   <%= render partial: 'blog/posts/post_header', locals: {post: post} %>
 
-  <div class="content" data-blog="content">
-    <%= truncate_html(post.content, length: Blog::Config.preview_size, omission: '...') %>
+  <div class="content inimei-blog" data-blog="content">
+    <%= truncate_html(post.content) %>
   </div>
 
   <div class="tags" data-blog="tags">
     <%= render post.tags %>
   </div>
-  <%= link_to t('.readmore'), post.full_url, class: 'button' %>
+  <!-- %= link_to t('.readmore'), post.full_url, class: 'button' %-->
 </section>

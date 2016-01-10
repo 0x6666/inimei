@@ -1,4 +1,4 @@
-class Blog::Admin::BaseController < Blog::BlogBaseController
+class Blog::Admin::BaseController < ApplicationController
   layout 'layouts/blog/admin'
   
 end

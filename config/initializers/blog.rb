@@ -19,12 +19,9 @@ module Blog
                   :admin_posts_per_page,
                   :layout,
                   :sidebar,
-                  :preview_size,
                   :weibo_name
 
     def initialize
-      @preview_size = 1000;
-
       @site_name = 'INiMei Blog'
       @site_subtitle = 'My own place online'
       @site_url = 'https://www.inimei.net'
