@@ -1,7 +1,7 @@
-<%= sidebar_section_for(t(".title")) do  %>
-  <ul>
-    <% @recent_posts.each do |post| %>
-      <li><%= link_to post.title, post.full_url %></li>
-    <% end %>
-  </ul>
+<%= sidebar_section_for(t('.title'), 'latest-posts') do  %>
+    <div class="sub-item">
+      <% @recent_posts.each do |post| %>
+          <%= link_to post.title, post.full_url %>
+      <% end %>
+    </div>
 <% end %>

@@ -34,7 +34,7 @@ module Blog
       @preview_size = 1000
 
       @disqus_shortname = 'my_disqus_shortname'
-      @sidebar = ['latest_posts', 'categories', 'tag_cloud'] #'latest_tweets',
+      @sidebar = %w[categories latest_posts] # tag_cloud 'latest_tweets',
 
       @linkedin_url = 'https://www.linkedin.com/in/%E6%9D%BE-%E6%9D%A8-1aa96aa2'
       @weibo_name = 'borrowedstory'

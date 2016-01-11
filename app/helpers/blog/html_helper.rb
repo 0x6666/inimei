@@ -24,8 +24,8 @@ module Blog
       end
     end
 
-    def sidebar_section_for(title, &block)
-       content_tag(:section, class: 'widget') do
+    def sidebar_section_for(title, name = nil, &block)
+       content_tag(:section, class: name.nil? ? 'widget' : "widget #{name}") do
          content_tag(:header, content_tag(:h1, title)) +
              capture(&block)
        end
