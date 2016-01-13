@@ -30,7 +30,7 @@ module Blog::BlogBaseHelper
     end
 
     def linkedin_icon
-      social_icon('linkedin', Blog::Config.linkedin_url, Blog::Config.linkedin_url)
+      social_img('linkedin', Blog::Config.linkedin_url, 'linkedin.png')
     end
 
     def weibo_icon
