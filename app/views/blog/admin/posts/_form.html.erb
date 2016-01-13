@@ -26,8 +26,23 @@
 </div>
 
 <script>
-  if($.fn.datepicker.defaults_<%= I18n.locale %>){
-    $.fn.datepicker.defaults = $.fn.datepicker.defaults_<%= I18n.locale %>;
-  }
   $("#post_tag_list").select2({tags: <%= Blog::Tag.all.map{|t| t.name }.to_json.html_safe %> });
+</script>
+
+<textarea id="markItUp" cols="80" rows="20"></textarea>
+
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#markItUp').markItUp(mySettings,
+        {
+          root:'markupsets/markdown/',
+          previewTemplatePath:'/downloads/preview.php',
+          previewAutoRefresh:false
+        }
+    );
+    $.get("markupsets/markdown", function(text) {
+      $("#markItUp").val(text);
+    });
+  });
 </script>

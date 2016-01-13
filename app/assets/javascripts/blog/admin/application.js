@@ -10,3 +10,5 @@
 //= require ckeditor/init
 //= require blog/admin/posts
 //= require select2
+//= require markitup/jquery.markitup
+//= require markitup/sets/markdown/set

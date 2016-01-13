@@ -8,4 +8,6 @@
  * require blog/bootstrap/bootstrap-datepicker
  *= require select2
  *= require blog/admin/posts
+ *= require markitup/skins/simple/style
+ *= require markitup/sets/markdown/style
 */

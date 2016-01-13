@@ -24,6 +24,9 @@ gem 'select2-rails', '~> 3.2'
 gem 'responders', '~> 2.1.0'
 #gem 'bootstrap-datepicker-rails'
 
+gem 'redcarpet'
+gem 'coderay'
+
 
 group :doc do
   gem 'sdoc', '0.4.0'
