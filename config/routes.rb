@@ -40,9 +40,9 @@ Rails.application.routes.draw do
       get '/' => 'posts#index', as:  '' # responds to admin_url and admin_path
       get '/page/:page', to:  'posts#index', as:  'posts_page'
       resources :posts
-      resources :users
       get 'comments' => 'comments#show', as: 'comments'
 
+      match '/posts/markdown_prev' => 'posts#markdown_prev', :as=>'post_markdown_prev', :via => [:put, :post]
       match '/post/preview'=>'posts#preview', :as=>'post_preview', :via => [:put, :post]
     end
 
@@ -50,6 +50,7 @@ Rails.application.routes.draw do
     #mount Blog::Engine, at: '/blog'
   end
 
+  mount Markitup::Rails::Engine, at: 'markitup', as: 'markitup'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

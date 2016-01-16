@@ -1,6 +1,11 @@
 <%= post.error_messages %>
 <%= post.text_field :title, label:  t('.title'), class:  'span6' %>
-<%= post.text_area :content, label:  t('.content'), class:  'span12 ckeditor', id: 'post_content' %>
+<% if @post.content_markdown %>
+    <%= post.blog_text_area :content, label:  t('.content'), class:  'content-markdown', id: 'post_content' %>
+<% else %>
+    <%= post.blog_text_area :content, label:  t('.content'), class:  'span12 ckeditor', id: 'post_content' %>
+<%end%>
+
 <%= post.text_field :url, label:  raw(t('.url.caption',
                                         default_url: "#{DateTime.now.year}/#{t('.url.generated_title')}",
                                         root: blog_root_path)) %>
@@ -29,20 +34,8 @@
   $("#post_tag_list").select2({tags: <%= Blog::Tag.all.map{|t| t.name }.to_json.html_safe %> });
 </script>
 
-<textarea id="markItUp" cols="80" rows="20"></textarea>
-
-
-<script type="text/javascript">
-  $(document).ready(function() {
-    $('#markItUp').markItUp(mySettings,
-        {
-          root:'markupsets/markdown/',
-          previewTemplatePath:'/downloads/preview.php',
-          previewAutoRefresh:false
-        }
-    );
-    $.get("markupsets/markdown", function(text) {
-      $("#markItUp").val(text);
-    });
-  });
-</script>
+<% if @post.content_markdown %>
+  <script type="text/javascript">
+    $("#post_content").markItUp(mySettings);
+  </script>
+<% end %>

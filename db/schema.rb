@@ -11,17 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160107140620) do
+ActiveRecord::Schema.define(version: 20160115144037) do
 
   create_table "blog_posts", force: :cascade do |t|
-    t.boolean  "published",    limit: 1
-    t.integer  "user_id",      limit: 4
-    t.string   "title",        limit: 255
-    t.text     "content",      limit: 65535
-    t.string   "url",          limit: 255
+    t.boolean  "published",        limit: 1
+    t.integer  "user_id",          limit: 4
+    t.string   "title",            limit: 255
+    t.text     "content",          limit: 65535
+    t.string   "url",              limit: 255
     t.datetime "published_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "content_markdown", limit: 1,     default: true
   end
 
   add_index "blog_posts", ["published_at"], name: "index_blog_posts_on_published_at", using: :btree

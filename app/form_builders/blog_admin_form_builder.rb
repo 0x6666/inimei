@@ -1,11 +1,17 @@
 class BlogAdminFormBuilder < ActionView::Helpers::FormBuilder
   delegate :content_tag, :tag, to: :@template
 
-  %w[text_field text_area password_field collection_select select file_field].each do |method_name|
+  %w[text_field password_field collection_select select file_field].each do |method_name|
     define_method(method_name) do |name, *args|
       content_tag :div, class:  'field' do
         field_label(name, *args) + super(name, *args)
       end
+    end
+  end
+
+  def blog_text_area(name, *args)
+    content_tag :div, class:  'field' do
+      field_label(name, *args) + text_area(name, *args)
     end
   end
 

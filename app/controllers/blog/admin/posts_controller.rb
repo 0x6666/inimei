@@ -21,6 +21,10 @@ class Blog::Admin::PostsController < Blog::Admin::BaseController
     render '/blog/posts/show', layout: Blog::Config.layout || '/layouts/blog/application'
   end
 
+  def markdown_prever
+
+  end
+
   def create
     @post = Blog::Post.new post_params
     @post.user_id = current_user.id
@@ -67,6 +71,6 @@ private
   end
 
   def post_params
-    params.require(:blog_post).permit(:published, :tag_list,:title,:content,:url)
+    params.require(:blog_post).permit(:published, :tag_list, :title, :content, :url)
   end
 end

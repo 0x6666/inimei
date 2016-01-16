@@ -26,6 +26,7 @@ gem 'responders', '~> 2.1.0'
 
 gem 'redcarpet'
 gem 'coderay'
+gem 'markitup-rails'
 
 
 group :doc do
