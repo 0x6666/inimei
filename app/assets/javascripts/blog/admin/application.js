@@ -12,3 +12,4 @@
 //= require select2
 //= require markitup
 //= require markitup/sets/markdown/set
+//= require blog/admin/custom-markitup

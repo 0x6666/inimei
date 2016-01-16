@@ -1,4 +1,4 @@
-source 'https://ruby.taobao.org'
+source 'https://rubygems.org/'
 
 gem 'rails', '4.2.0'
 gem 'bcrypt', '~> 3.1.7'
@@ -15,6 +15,7 @@ gem 'bootstrap-will_paginate', '0.0.10'
 gem 'mini_magick', '3.8.0'
 gem 'mysql2', '~>0.3.18'
 gem 'carrierwave-qiniu', '0.1.8'
+
 #gem 'coveralls', require: false
 
 gem 'truncate_html'
@@ -24,10 +25,10 @@ gem 'select2-rails', '~> 3.2'
 gem 'responders', '~> 2.1.0'
 #gem 'bootstrap-datepicker-rails'
 
-gem 'redcarpet'
-gem 'coderay'
+# for markdowum
 gem 'markitup-rails'
-
+gem 'redcarpet'
+gem 'pygments.rb'
 
 group :doc do
   gem 'sdoc', '0.4.0'
@@ -36,24 +37,15 @@ end
 group :development, :test do
   gem 'byebug', '3.4.0'
   gem 'web-console', '2.0.0.beta3'
-#  gem 'spring', '1.1.3'
-
-#  gem "thin"   #check
   gem 'pry'
-
-  #if RUBY_PLATFORM.downcase.include?("darwin")
-    #gem 'rb-fsevent'
-    #gem 'growl'
-  #end
 end
 
 group :test do
-  gem 'minitest-reporters', '1.0.5'
+  #gem 'minitest-reporters', '1.0.5'
   gem 'mini_backtrace', '0.1.3'
   gem 'guard-minitest', '2.3.1'
 end
 
 group :production do
-  gem 'unicorn', '4.8.3'
+  #gem 'unicorn', '4.8.3'
 end
-

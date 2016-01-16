@@ -30,6 +30,5 @@ module Blog
              capture(&block)
        end
      end
-
   end
 end

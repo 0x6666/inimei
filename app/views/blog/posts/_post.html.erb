@@ -2,7 +2,7 @@
   <%= render partial: 'blog/posts/post_header', locals: {post: post} %>
 
   <div class="content inimei-blog" data-blog="content">
-    <%= truncate_html(post.content) %>
+    <%= truncate_html(post.content_markdown ? markdown(post.content) : post.content) %>
   </div>
 
   <div class="tags" data-blog="tags">
