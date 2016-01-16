@@ -81,7 +81,13 @@ a.social {
 
 /* content */
 
-.prev-blog {
+.prev-blog , article {
+  h2, h3, h4, h5, h6 {
+    //font-size: 16px;
+    //text-transform: uppercase;
+    //font-weight: bold;
+  }
+
   background-color: white;
   margin-bottom: 10px;
 
@@ -171,14 +177,6 @@ a.social {
   }
 
 }
-
-.content article h2, .content article h3, .content article h4, .content article h5, .content article h6,
-.content section h2, .content section h3, .content section h4, .content section h5, .content section h6 {
-    font-size: 16px;
-    text-transform: uppercase;
-    font-weight: bold;
- }
-
 
 .tag-search,
 .flash-notice {
