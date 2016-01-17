@@ -28,4 +28,17 @@ module UsersHelper
     image_tag(img_url, options)
   end
 
+  def my_avatar(options = {size: 80})
+
+    user = User.find_by_email('yangsongfwd@163.com')
+
+    img_url = user_avatar_url(user, options)
+
+    options[:alt] = user.name
+    options[:class] ||= 'avatar'
+    options[:size] = options[:size].to_s
+
+    image_tag(img_url, options)
+  end
+
 end

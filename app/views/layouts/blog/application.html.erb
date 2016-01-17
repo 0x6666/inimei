@@ -9,9 +9,12 @@
 <body>
   <div class="container">
     <header class="main-header sixteen columns clearfix">
+      <div class="blog-head-info">
+        <%= link_to my_avatar(size: 100), '#', class: 'avatar' %>
+        <h1><a href="<%= blog_root_path %>"><%=Blog::Config.site_name%></a></h1>
+        <h2><%=Blog::Config.site_subtitle%></h2>
+      </div>
       <%= rss_icon %>
-      <h1><a href="<%= blog_root_path %>"><%=Blog::Config.site_name%></a></h1>
-      <h2><%=Blog::Config.site_subtitle%></h2>
       <%= render partial: 'layouts/blog/application/social_icons' %>
     </header>
 
@@ -28,11 +31,14 @@
     <%= render 'layouts/blog/application/sidebar' %>
 
   </div>
-  <% if content_for?(:footer) %>
+
+  <%= render 'layouts/blog/application/footer' %>
+
+  <!--% if content_for?(:footer) %>
     <footer>
-      <%= yield :footer %>
+      < %= yield :footer %>
     </footer>
-  <% end %>
+  < % end % -->
   <!-- %= render 'layouts/blog/application/disqus' % -->
   <!--%= render 'layouts/blog/application/gauge_analytics' %-->
 </body>

@@ -23,7 +23,7 @@ module Blog
 
     def initialize
       @site_name = 'INiMei Blog'
-      @site_subtitle = 'My own place online'
+      @site_subtitle = 'Just enjoy every moment'
       @site_url = 'https://www.inimei.net'
 
       @meta_description = "I don't know!!"
@@ -38,7 +38,6 @@ module Blog
 
       @linkedin_url = 'https://www.linkedin.com/in/%E6%9D%BE-%E6%9D%A8-1aa96aa2'
       @weibo_name = 'borrowedstory'
-
     end
   end
 

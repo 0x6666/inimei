@@ -1,19 +1,19 @@
 
 @mixin blog_shadow {
-  -webkit-box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.75);
-  -moz-box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.75);
-  box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 }
 
 @mixin  blog_border {
-  border-radius: 5px;
+/*  border-radius: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
-  -khtml-border-radius: 5px;
+  -khtml-border-radius: 5px;*/
 }
 
 body {
-  background-color: #ededef;
+  background-color: #dfdfe1;
 }
 
 /* general */
@@ -33,28 +33,62 @@ ul {
 
 /* header */
 .main-header{
-  margin: 20px 0 0 0;
+  margin: 50px 0 30px 0;
+  background-color: white;
+
+  @include blog_shadow;
+  @include blog_border;
+
+  .blog-head-info {
+    margin: 30px 0 0 30px;
+    .avatar {
+      float: left;
+      margin-right: 10px;
+    }
+
+    h1 a {
+      color: #4c4c4c;
+    }
+    h2 {
+      font-size: 25px;
+      color: #747474;
+    }
+  }
+
+  .social:first-of-type i {
+    float:right;
+    padding: 20px 0 0 0;
+    font-size: 50px;
+    text-decoration: none;
+  }
+
+  .social {
+    float: right;
+    margin: 0 2px 0 2px;
+  }
+
+  a.social {
+    text-decoration: none;
+  }
+
+  .social i {
+    font-size: 30px;
+  }
+
+  .social {
+    .social-img {
+      height: 50px;
+      width: 50px;
+      padding-top: 5px;
+
+      filter:alpha(opacity=50);
+      -moz-opacity: 0.5;
+      -khtml-opacity: 0.5;
+      opacity: 0.5;
+    }
+  }
 }
 
-.main-header .social:first-of-type i {
-  float:right;
-  padding: 20px 0 0 0;
-  font-size: 50px;
-  text-decoration: none;
-}
-
-.main-header .social {
-  float: right;
-  margin: 0 2px 0 2px;
-}
-
-a.social {
-  text-decoration: none;
-}
-
-.social i {
-  font-size: 30px;
-}
 
 .post-header span:after{
     content: "|";
@@ -67,7 +101,7 @@ a.social {
 
 #pagination {
   margin: 20px 0 0 0;
-  border-top: 3px solid #000;
+  //border-top: 3px solid #000;
   font-size: 20px;
 }
 
@@ -94,10 +128,7 @@ a.social {
   @include blog_shadow;
   @include blog_border;
 
-  border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -khtml-border-radius: 5px;
+
 
   header {
     border-bottom: 1px solid #c6c6c6;
@@ -342,11 +373,12 @@ a.social {
   }
 }
 
-.social {
-  .social-img {
-    height: 50px;
-    width: 50px;
-
-    padding-top: 5px;
+footer {
+  margin-top: 20px;
+  height: 40px;
+  text-align: center;
+  span, a {
+    margin-top: 20%;
+    color: #494949;
   }
 }
