@@ -20,6 +20,10 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  please_login: "Please log in!"
+
+
+
   blog:
     posts:
       pagination:
@@ -119,6 +123,15 @@ en:
           logged_in: "Logged in!"
           logged_out: "Logged out!"
   layouts:
+    header:
+      home: "Home"
+      users: "Users"
+      blog: "Blog"
+      profile: "Profile"
+      setting: "Setting"
+      schedules: "Schedules"
+      log_out: "Log Out"
+      log_in: "Log In"
     blog:
       admin:
         nav_bar:
@@ -135,6 +148,8 @@ en:
           profile: "Profile"
           setting: "Setting"
           schedules: "Schedules"
+      application:
+          my_home: "My Home"
   activerecord:
     attributes:
       blog/user:

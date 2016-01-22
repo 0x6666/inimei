@@ -1,11 +1,13 @@
 class Blog::PostsController < Blog::BlogBaseController
 
   def index
+    @setting = blog_setting
     @page = params[:page].nil? ? 1 : params[:page]
-    @posts = Blog::Post.page(@page).includes(:user).published
+    @posts = Blog::Post.page(@page, @setting.blogs_per_page).includes(:user).published
   end
 
   def show
+    @setting = blog_setting
     if current_user
       @post = Blog::Post.default.where('url = :url', {url: params[:post_url]}).first
     else

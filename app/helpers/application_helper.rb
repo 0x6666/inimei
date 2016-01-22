@@ -1,4 +1,5 @@
 module ApplicationHelper
+  include UilHelper
 
   def full_title(page_title = '')
     base_title = 'INiMei'
@@ -7,6 +8,14 @@ module ApplicationHelper
     else
       "#{page_title} | #{base_title}"
     end
+  end
+
+  def blog_owner
+    request.nil? ? nil : Blog::Setting.owner(request.subdomain)
+  end
+
+  def blog_setting
+    request.nil? ? nil : Blog::Setting.setting(request.subdomain)
   end
 
   class HTMLwithCodeRay < Redcarpet::Render::HTML

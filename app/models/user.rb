@@ -20,7 +20,8 @@ class User < ActiveRecord::Base
   has_many :schedules, dependent: :destroy
 
   #blogs
-  has_many :posts
+  has_many :blog_posts, class_name: 'Blog::Post', dependent: :destroy
+  has_one :blog_setting, class_name: 'Blog::Setting', dependent: :destroy
 
   before_save :downcase_email
   before_create :create_activation_digest

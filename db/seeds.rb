@@ -58,4 +58,13 @@ yangsong = User.find_by_email('yangsongfwd@163.com')
 
 end
 
+Blog::Setting.create!(user: yangsong,
+                     blog_name: 'INiMei Blog',
+                     blog_subtitle: 'Just enjoy every moment',
+                     blogs_per_page: 10,
+                     blog_preview_size: 1000,
+                     linkedin_url: 'https://www.linkedin.com/in/%E6%9D%BE-%E6%9D%A8-1aa96aa2',
+                     weibo_name: 'borrowedstory',
+                     domain: 'yangsong')
+
 #Blog::User.create!({name: 'yangsong', email: 'yangsongfwd@163.com', password: '123456', password_confirmation: '123456'})

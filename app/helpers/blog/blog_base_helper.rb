@@ -9,8 +9,8 @@ module Blog::BlogBaseHelper
       form_for(object, options, &block)
     end
 
-    def blog_accurate_title
-      content_for?(:title) ? ((content_for :title) + " | #{Blog::Config.site_name}") : Blog::Config.site_name
+    def blog_accurate_title(title)
+      content_for?(:title) ? ((content_for :title) + " | #{title}") : title
     end
 
     def rss_head_link
@@ -29,12 +29,12 @@ module Blog::BlogBaseHelper
       social_icon('twitter', "http://twitter.com/#{Blog::Config.twitter_username}", Blog::Config.twitter_username)
     end
 
-    def linkedin_icon
-      social_img('linkedin', Blog::Config.linkedin_url, 'linkedin.png')
+    def linkedin_icon(setting)
+      setting.nil? ? nil : social_img('linkedin', setting.linkedin_url, 'linkedin.png')
     end
 
-    def weibo_icon
-      social_img('weibo', "http://weibo.com/#{Blog::Config.weibo_name}", 'weibo.png')
+    def weibo_icon(setting)
+      setting.nil? ? nil : social_img('weibo', "http://weibo.com/#{setting.weibo_name}", 'weibo.png')
     end
 
     def googleplus_icon

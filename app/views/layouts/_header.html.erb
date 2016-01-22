@@ -3,26 +3,27 @@
     <%= link_to 'INiMei', root_path, id: 'logo' %>
     <nav>
       <ul class="nav navbar-nav pull-right">
-        <li><%= link_to 'Home', root_path %></li>
+        <li><%= link_to t('.home'), root_path %></li>
         <% if logged_in? %>
             <% if current_user.admin? %>
-                <li><%= link_to 'Users', users_path %></li>
+                <li><%= link_to t('.users'), users_path %></li>
             <% end %>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <%= current_user.name %> <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
-                <li><%= link_to 'Profile', user_path(current_user) %></li>
-                <li><%= link_to 'Setting', edit_user_path(current_user) %></li>
+                <li><%= link_to t('.profile'), user_path(current_user) %></li>
+                <li><%= link_to t('.setting'), edit_user_path(current_user) %></li>
                 <li class="divider"></li>
-                <li><%= link_to 'Schedules', schedules_user_path(current_user) %></li>
+                <li><%= link_to t('.schedules'), schedules_user_path(current_user) %></li>
+                <li><%= link_to t('.blog'), user_blog_index_url(current_user) %></li>
                 <li class="divider"></li>
-                <li><%= link_to 'Log Out', logout_path, method: 'delete' %></li>
+                <li><%= link_to t('.log_out'), logout_path, method: 'delete' %></li>
               </ul>
             </li>
         <% else %>
-            <li><%= link_to 'Log in', login_path %></li>
+            <li><%= link_to t('.log_in'), login_path %></li>
         <% end %>
       </ul>
     </nav>

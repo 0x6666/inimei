@@ -1,6 +1,6 @@
 class Blog::BlogBaseController < ApplicationController
 
-    layout 'layouts/blog/application'
+    layout 'blog/application'
 
     before_filter :recent_posts, :all_tags, :archive_posts
 

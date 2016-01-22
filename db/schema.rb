@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160115144037) do
+ActiveRecord::Schema.define(version: 20160121130059) do
 
   create_table "blog_posts", force: :cascade do |t|
     t.boolean  "published",        limit: 1
@@ -27,6 +27,22 @@ ActiveRecord::Schema.define(version: 20160115144037) do
 
   add_index "blog_posts", ["published_at"], name: "index_blog_posts_on_published_at", using: :btree
   add_index "blog_posts", ["url"], name: "index_blog_posts_on_url", unique: true, using: :btree
+
+  create_table "blog_settings", force: :cascade do |t|
+    t.integer  "user_id",           limit: 4
+    t.string   "blog_name",         limit: 255
+    t.string   "blog_subtitle",     limit: 255
+    t.integer  "blogs_per_page",    limit: 4
+    t.integer  "blog_preview_size", limit: 4
+    t.string   "linkedin_url",      limit: 255
+    t.string   "weibo_name",        limit: 255
+    t.string   "domain",            limit: 255
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "blog_settings", ["domain"], name: "index_blog_settings_on_domain", unique: true, using: :btree
+  add_index "blog_settings", ["user_id"], name: "index_blog_settings_on_user_id", using: :btree
 
   create_table "blog_taggings", force: :cascade do |t|
     t.integer "post_id", limit: 4
@@ -104,6 +120,7 @@ ActiveRecord::Schema.define(version: 20160115144037) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
+  add_foreign_key "blog_settings", "users"
   add_foreign_key "schedules", "users"
   add_foreign_key "sub_schedules", "schedules"
 end

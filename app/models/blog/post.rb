@@ -36,19 +36,19 @@ class Blog::Post < ActiveRecord::Base
     self.published && self.published_at > DateTime.now
   end
 
-  def self.page p
-    paged_results(p, Blog::Config.posts_per_page || 10, false)
+  def self.page(p, per_page)
+    paged_results(p, per_page || 10, false)
   end
 
-  def self.listing_page(p)
-    paged_results(p, Blog::Config.admin_posts_per_page || 50, true)
+  def self.listing_page(p, per_page)
+    paged_results(p, per_page || 50, true)
   end
 
   def self.total_pages
     @number_of_pages
   end
 
-  def self.set_total_pages per_page
+  def self.set_total_pages(per_page)
     @number_of_pages = self.count / per_page + (self.count % per_page == 0 ? 0 : 1)
   end
 

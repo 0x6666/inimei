@@ -3,8 +3,9 @@ class Blog::Admin::PostsController < Blog::Admin::BaseController
   before_filter :load_post, only: [:edit, :update]
 
   def index
+    @setting = blog_setting
     @page = params[:page].nil? ? 1 : params[:page]
-    @posts = Blog::Post.listing_page(@page).includes(:user)
+    @posts = Blog::Post.listing_page(@page, @setting.blogs_per_page).includes(:user)
   end
 
   def new

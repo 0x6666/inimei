@@ -1,5 +1,6 @@
 source 'https://rubygems.org/'
 
+gem 'rake'
 gem 'rails', '4.2.0'
 gem 'bcrypt', '~> 3.1.7'
 gem 'sass-rails','~> 5.0.0'
@@ -47,5 +48,5 @@ group :test do
 end
 
 group :production do
-  #gem 'unicorn', '4.8.3'
+  gem 'unicorn', '4.8.3'
 end
