@@ -9,6 +9,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     get root_path
     assert_redirected_to about_path
 
+=begin
     get root_path
     assert_template 'static_pages/home'
     assert_select 'a[href=?]', root_path, count: 2
@@ -18,6 +19,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_select 'a[href=?]', users_path, count: 0
     assert_select 'a[href=?]', logout_path, count: 0
     assert_select 'a[href=?]', login_path
+=end
 
     log_in_as @user
     get root_path

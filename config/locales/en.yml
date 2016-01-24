@@ -149,7 +149,8 @@ en:
           setting: "Setting"
           schedules: "Schedules"
       application:
-          my_home: "My Home"
+          my_home: "My home"
+          add_a_blog: "Add a blog"
   activerecord:
     attributes:
       blog/user:

@@ -404,15 +404,25 @@ footer {
         height: 23px;
         line-height: 23px;
         float: left;
-        background: url(linkbg.png) no-repeat left -30px;
+
         padding: 0 5px 0 26px;
         color: white;
 
         cursor: pointer;
         text-decoration: none;
+      }
 
+      .my-home {
+        background: url(linkbg.png) no-repeat left -30px;
         &:hover {
           background-position: 0 -60px;
+        }
+      }
+
+      .new-blog {
+        background: url(linkbg.png) no-repeat left -90px;
+        &:hover {
+          background-position: 0 -120px;
         }
       }
     }

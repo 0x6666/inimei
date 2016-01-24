@@ -1,19 +1,31 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  user_id: 
+michael:
+  user: michael
   blog_name: MyString
   blog_subtitle: MyString
-  blogs_per_page: 
-  blog_preview_size: 
+  blogs_per_page: 10
+  blog_preview_size: 10
   linkedin_url: MyString
   weibo_name: MyString
+  domain: test
 
-two:
-  user_id: 
+yangsong:
+  user: yangsong
   blog_name: MyString
   blog_subtitle: MyString
-  blogs_per_page: 
-  blog_preview_size: 
+  blogs_per_page: 10
+  blog_preview_size: 10
   linkedin_url: MyString
   weibo_name: MyString
+  domain: yangsong
+
+archer:
+  user: archer
+  blog_name: MyString
+  blog_subtitle: MyString
+  blogs_per_page: 10
+  blog_preview_size: 10
+  linkedin_url: MyString
+  weibo_name: MyString
+  domain: archer

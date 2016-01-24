@@ -29,6 +29,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     end
     assert_equal 1, ActionMailer::Base.deliveries.size
     user = assigns(:user)
+    assert_equal "inimeiblog-#{user.id.to_s}", user.blog_setting.domain
     assert_not user.activated?
     log_in_as user
     assert_not is_logged_in?
@@ -40,9 +41,9 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     assert_not is_logged_in?
 #
     get edit_account_activation_path(user.activation_token, email: user.email)
+    assert is_logged_in?
     assert user.reload.activated?
     follow_redirect!
     assert_template 'users/show'
-    assert is_logged_in?
   end
 end

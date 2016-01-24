@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
 
   before_save :downcase_email
   before_create :create_activation_digest
+  after_save :ensure_blog_setting
 
   validates :password, length: {minimum: 6}
 
@@ -115,5 +116,13 @@ class User < ActiveRecord::Base
   def create_activation_digest
     self.activation_token = User.new_token
     self.activation_digest = User.digest(self.activation_token)
+  end
+
+  def ensure_blog_setting
+    if self.blog_setting.nil?
+      #why can't use create_blog_setting! ?
+      set = self.create_blog_setting(domain: "inimeiblog-#{self.id}")
+      set.save
+    end
   end
 end

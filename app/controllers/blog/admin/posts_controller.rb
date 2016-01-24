@@ -1,6 +1,7 @@
 class Blog::Admin::PostsController < Blog::Admin::BaseController
   respond_to :html
   before_filter :load_post, only: [:edit, :update]
+  before_action :logged_in_user, only: [:index, :new, :create, :edit, :update, :destroy]
 
   def index
     @setting = blog_setting
@@ -20,10 +21,6 @@ class Blog::Admin::PostsController < Blog::Admin::BaseController
     @post.published_at = Time.zone.now
     # render it exactly as it would display when live.
     render '/blog/posts/show', layout: Blog::Config.layout || '/layouts/blog/application'
-  end
-
-  def markdown_prever
-
   end
 
   def create

@@ -8,7 +8,7 @@ michael:
   activated: true
   activated_at: <%= Time.zone.now.to_datetime %>
 
-michael:
+yangsong:
   name: Yang Song
   email: yangsongfwd@163.com
   password_digest: <%= User.digest('password') %>

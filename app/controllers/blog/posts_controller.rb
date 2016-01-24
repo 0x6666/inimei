@@ -19,6 +19,7 @@ class Blog::PostsController < Blog::BlogBaseController
   end
 
   def feed
+    @setting = blog_setting
     @posts = Blog::Post.published.limit(25)
     if params[:tags].present?
       tags = Blog::Tag.where(name: params[:tags].split(',')).pluck(:id)
