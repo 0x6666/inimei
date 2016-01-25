@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     unless logged_in?
       store_location
       flash[:danger] = t('please_login')
-      redirect_to login_url
+      redirect_to login_url(subdomain: nil)
     end
   end
 end

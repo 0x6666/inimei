@@ -151,6 +151,7 @@ en:
       application:
           my_home: "My home"
           add_a_blog: "Add a blog"
+          log_in: "Log in"
   activerecord:
     attributes:
       blog/user:

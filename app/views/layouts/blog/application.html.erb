@@ -11,9 +11,13 @@
   <div class="blog-top">
     <ul>
       <% if current_user == blog_owner%>
-        <li><%= link_to t('.add_a_blog'), new_blog_admin_post_path, class: 'new-blog' %></li>
+          <li><%= link_to t('.add_a_blog'), new_blog_admin_post_path, class: 'new-blog' %></li>
       <% end %>
-      <li><%= link_to t('.my_home'), user_url(blog_owner, subdomain: nil), class: 'my-home' %></li>
+      <% if current_user %>
+          <li><%= link_to t('.my_home'), user_url(current_user, subdomain: nil), class: 'my-home' %></li>
+      <% else %>
+          <li><%= link_to t('.log_in'), login_url(subdomain: nil), class: 'log-in' %></li>
+      <% end %>
     </ul>
   </div>
 
