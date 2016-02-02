@@ -705,3 +705,16 @@ aside {
 article {
   background-color: white;
 }
+
+
+/* setting */
+
+#setting {
+  .tab-content {
+    background-color: white;
+    .tab-pane {
+      background-color: white;
+      padding: 20px;
+    }
+  }
+}

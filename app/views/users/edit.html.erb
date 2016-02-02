@@ -1,12 +1,92 @@
 <% provide :title, 'Edit user' %>
-<h1>Update your profile</h1>
 
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@user) do |f| %>
-        <%= render 'fields', f: f %>
+  <div class="col-md-8 col-md-offset-2" id="setting">
+    <ul class="nav nav-tabs" id="setting-tab">
+      <li class="active"><a href="#basic">Basic</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><a href="#password">Password</a></li>
+    </ul>
 
-        <%= f.submit 'Save Changes', class: 'btn btn-primary' %>
-    <% end %>
+    <div class="tab-content">
+      <div class="tab-pane active" id="basic">
+        <%= form_for @user, url: basic_setting_user_url(@user) do |f| %>
+
+            <%= render 'shared/error_messages', object: f.object %>
+
+            <%= f.label :name %>
+            <%= f.text_field :name, class: 'form-control' %>
+
+            <%= f.label :email %>
+            <%= f.text_field :email, class: 'form-control' %>
+
+            <div id="change_avatar" class="input-picture">
+              <img alt=<%= @user.name %> id="avatar_preview" width="130" height="130"
+                   src=<%= user_avatar_url(@user, size: 130) %>>
+                <span class="btn change input-picture-btn" id="avatar_input">Choose Picture
+                  <%= f.file_field :avatar, accept: 'image/jpeg,image/gif,image/png', class: 'input-picture-input' %>
+                </span>
+            </div>
+
+            <script type="text/javascript">
+              $('#user_avatar').bind('change', input_picture_changed);
+            </script>
+            <%= f.submit 'Save Changes', class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+      <div class="tab-pane" id="blog">
+        <%= form_for @user.blog_setting, url: blog_setting_user_url(@user) do |f| %>
+
+            <%= render 'shared/error_messages', object: f.object %>
+
+            <%= f.label :blog_name %>
+            <%= f.text_field :blog_name, class: 'form-control' %>
+
+            <%= f.label :blog_subtitle %>
+            <%= f.text_field :blog_subtitle, class: 'form-control' %>
+
+            <%= f.label :blogs_per_page %>
+            <%= f.text_field :blogs_per_page, class: 'form-control' %>
+
+            <%= f.label :blog_preview_size %>
+            <%= f.text_field :blog_preview_size, class: 'form-control' %>
+
+            <%= f.label :linkedin_url %>
+            <%= f.text_field :linkedin_url, class: 'form-control' %>
+
+            <%= f.label :weibo_name %>
+            <%= f.text_field :weibo_name, class: 'form-control' %>
+
+            <%= f.label :domain %>
+            <%= f.text_field :domain, class: 'form-control' %>
+
+            <%= f.submit 'Save Changes', class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+      <div class="tab-pane" id="password">
+        <%= form_for @user, url: password_setting_user_url(@user) do |f| %>
+
+            <%= render 'shared/error_messages', object: f.object %>
+
+            <%= f.label :password %>
+            <%= f.password_field :password, class: 'form-control' %>
+
+            <%= f.label :password_confirmation, 'Confirmation' %>
+            <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+            <%= f.submit 'Save Changes', class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
+
+<script>
+  $(function () {
+    $('#setting-tab a:first').tab('show');
+    $('#setting-tab a').click(function (e) {
+      e.preventDefault();
+      $(this).tab('show');
+    })
+  })
+</script>

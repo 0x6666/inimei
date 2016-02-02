@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       member do
         get :following, :followers, :schedules
         post :schedules
+        patch :basic_setting, :password_setting, :blog_setting
       end
     end
 

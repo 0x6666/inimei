@@ -49,6 +49,24 @@ class UsersController < ApplicationController
     end
   end
 
+  def basic_setting
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_basic)
+      flash[:success] = 'Profile updated'
+      redirect_to @user
+    else
+      render 'edit'
+    end
+  end
+
+  def password_setting
+
+  end
+
+  def blog_setting
+
+  end
+
   def following
     @title = 'Following'
     @user = User.find(params[:id])
@@ -79,6 +97,11 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar)
+  end
+
+  def user_basic
+    p = params.require(:user).permit(:name, :email, :avatar)
+    p
   end
 
   def correct_user

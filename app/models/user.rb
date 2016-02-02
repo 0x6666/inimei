@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   before_create :create_activation_digest
   after_save :ensure_blog_setting
 
-  validates :password, length: {minimum: 6}
+  validates :password, presence: false, length: {minimum: 6}
 
   validates :name, presence: true, length: {maximum: 50}
 
