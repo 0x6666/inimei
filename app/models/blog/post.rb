@@ -68,7 +68,9 @@ class Blog::Post < ActiveRecord::Base
   def generate_url
     return unless self.url.blank?
     year = self.published_at.class == ActiveSupport::TimeWithZone ? self.published_at.year : DateTime.now.year
-    self.url = "#{year}/#{self.title.parameterize}"
+    param = self.title.parameterize
+    param = (Blog::Post.count + 1).to_s if param.blank?
+    self.url = "#{year}/#{param}"
   end
 
   def url_do_not_start_with_slash
