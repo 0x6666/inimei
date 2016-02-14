@@ -176,7 +176,7 @@ ul {
       height: 19px;
       overflow: hidden;
       padding: 0 0 0 20px;
-      background: url(x.png) no-repeat 0 -130px;
+      background: image-url("blog/blog/x.png") no-repeat 0 -130px;
       color: #42413f;
       line-height: 19px;
       font-weight: normal;
@@ -192,7 +192,7 @@ ul {
         height: 19px;
         overflow: hidden;
         padding: 0 10px 0 0;
-        background: url(x.png) no-repeat right -160px;
+        background: image-url("blog/blog/x.png") no-repeat right -160px;
       }
 
       &:hover {
@@ -413,14 +413,14 @@ footer {
       }
 
       .my-home, .log-in {
-        background: url(linkbg.png) no-repeat left -30px;
+        background: image-url("blog/blog/linkbg.png") no-repeat left -30px;
         &:hover {
           background-position: 0 -60px;
         }
       }
 
       .new-blog {
-        background: url(linkbg.png) no-repeat left -90px;
+        background: image-url("blog/blog/linkbg.png") no-repeat left -90px;
         &:hover {
           background-position: 0 -120px;
         }
