@@ -1,10 +1,12 @@
 <%= post.error_messages %>
 <%= post.text_field :title, label:  t('.title'), class:  'span6' %>
+
 <% if @post.content_markdown %>
     <%= post.blog_text_area :content, label:  t('.content'), class:  'content-markdown', id: 'post_content' %>
 <% else %>
     <%= post.blog_text_area :content, label:  t('.content'), class:  'span12 ckeditor', id: 'post_content' %>
 <%end%>
+<%= hidden_field_tag :content_markdown, @post.content_markdown %>
 
 <%= post.text_field :url, label:  raw(t('.url.caption',
                                         default_url: "#{DateTime.now.year}/#{t('.url.generated_title')}",

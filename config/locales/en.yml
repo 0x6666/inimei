@@ -21,8 +21,10 @@
 
 en:
   please_login: "Please log in!"
-
-
+  users:
+    edit:
+      new_password: "New Password"
+      old_password: "Old Password"
 
   blog:
     posts:
@@ -108,7 +110,7 @@ en:
           save: "Save"
           preview: "Preview"
           close: "Close"
-          tags: "Tags"
+          tags: "Tags<br/><i>Use commas split multiple tags.</i>"
       comments:
         show:
           recent_comments: "Recent comments"
@@ -122,6 +124,7 @@ en:
           invalid: "Invalid email or password"
           logged_in: "Logged in!"
           logged_out: "Logged out!"
+
   layouts:
     header:
       home: "Home"

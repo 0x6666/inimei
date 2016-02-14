@@ -10,6 +10,6 @@
 </p>
 
 <% if @user %>
-    <%= link_to 'Activate', edit_account_activation_url(@user.activation_token,
+    <%= link_to 'Activate', edit_account_activation_url(@user.auth_info.activation_token,
                                                         email: @user.email) %>
 <% end %>

@@ -10,7 +10,7 @@ Rails.application.config.assets.version = '1.0'
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
 
-NEED_TO_COMPILE_STYLESHEET_EXT = %w(.css .scss .sass .coffee .erb .png .js)
+NEED_TO_COMPILE_STYLESHEET_EXT = %w(.css .scss .sass .coffee .erb .js)
 
 def find_asset(dir, source, kind)
   assets = []

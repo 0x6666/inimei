@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.where(activated: true).paginate(page: params[:page])
+    @users = User.joins(:auth_info).where(auth_infos: { activated: true}).paginate(page: params[:page])
   end
 
   def new
@@ -20,18 +20,26 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    redirect_to root_url and return unless @user.activated?
+    redirect_to root_url and return unless @user.auth_info.activated?
     @microposts = @user.microposts.paginate(page: params[:page])
   end
 
   def create
-    @user = User.new(user_params)
-    if @user.save
-      @user.send_activation_email
-      flash[:info] = 'Please check your email to activate your account.'
-      redirect_to root_url
-    else
-      render 'new' #failed
+    @user = User.new(basic_params)
+    User.transaction do
+      if @user.save
+        @user.auth_info = AuthInfo.new(pwd_params)
+        @user.auth_info.user_id = @user.id
+        if @user.auth_info.save
+          @user.auth_info.send_activation_email
+          flash[:info] = 'Please check your email to activate your account.'
+          redirect_to root_url
+        else
+          render 'new'
+        end
+      else
+        render 'new'
+      end
     end
   end
 
@@ -41,7 +49,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
+    if @user.update_attributes(basic_params)
       flash[:success] = 'Profile updated'
       redirect_to @user
     else
@@ -51,7 +59,7 @@ class UsersController < ApplicationController
 
   def basic_setting
     @user = User.find(params[:id])
-    if @user.update_attributes(user_basic)
+    if @user.update_attributes(basic_params)
       flash[:success] = 'Profile updated'
       redirect_to @user
     else
@@ -60,11 +68,28 @@ class UsersController < ApplicationController
   end
 
   def password_setting
-
+    @user = User.find(params[:id])
+    if @user && @user.auth_info.authenticate(params[:user][:old_password])
+      if @user.auth_info.update_attributes(pwd_params)
+        flash[:success] = 'Password changed!'
+        redirect_to @user
+      else
+        render 'edit'
+      end
+    else
+      flash[:danger] = 'Old password error!'
+      render 'edit'
+    end
   end
 
   def blog_setting
-
+    @user = User.find(params[:id])
+    if @user.blog_setting.update_attributes(blog_params)
+      flash[:success] = 'Blog Settings Updated'
+      redirect_to @user
+    else
+      render 'edit'
+    end
   end
 
   def following
@@ -81,7 +106,7 @@ class UsersController < ApplicationController
     render 'show_follow'
   end
 
-  def schedules
+  def schedulesbasic_params
     @user = current_user
     date = params[:date]
     @select_date = date.nil? ? Time.now : Time.new(date[:year], date[:month], date[:day]).end_of_day
@@ -99,9 +124,22 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar)
   end
 
-  def user_basic
-    p = params.require(:user).permit(:name, :email, :avatar)
-    p
+  def pwd_params
+    params.require(:user).permit(:password, :password_confirmation)
+  end
+
+  def basic_params
+    params.require(:user).permit(:name, :email, :avatar)
+  end
+
+  def blog_params
+    params.require(:blog_setting).permit(:blog_name,
+                                 :blog_subtitle,
+                                 :blogs_per_page,
+                                 :blog_preview_size,
+                                 :linkedin_url,
+                                 :weibo_name,
+                                 :domain)
   end
 
   def correct_user

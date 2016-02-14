@@ -6,8 +6,8 @@ class SessionsController < ApplicationController
   # create session
   def create
     user = User.find_by(email: params[:session][:email].downcase)
-    if user && user.authenticate(params[:session][:password])
-      if user.activated?
+    if user && user.auth_info.authenticate(params[:session][:password])
+      if user.auth_info.activated?
         log_in user
         params[:session][:remember_me] == '1' ? remember(user) : forget(user)
         redirect_back_or user_path(user)

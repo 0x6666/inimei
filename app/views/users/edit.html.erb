@@ -68,7 +68,10 @@
 
             <%= render 'shared/error_messages', object: f.object %>
 
-            <%= f.label :password %>
+            <%= f.label :old_password, t('.old_password') %>
+            <%= f.password_field :old_password, class: 'form-control' %>
+
+            <%= f.label :password, t('.new_password') %>
             <%= f.password_field :password, class: 'form-control' %>
 
             <%= f.label :password_confirmation, 'Confirmation' %>

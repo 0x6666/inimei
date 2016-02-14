@@ -1,5 +1,6 @@
 class Blog::TagsController < Blog::BlogBaseController
   def show
+    @setting = blog_setting
     @tag = retrieve_tag
     if @tag
       @page = nil

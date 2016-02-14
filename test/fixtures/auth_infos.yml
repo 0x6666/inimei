@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+michael:
+  user: michael
+  password_digest: <%= AuthInfo.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now.to_datetime %>
+
+yangsong:
+  user: yangsong
+  password_digest: <%= AuthInfo.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now.to_datetime %>
+
+archer:
+  user: archer
+  password_digest: <%= AuthInfo.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now.to_datetime %>
+
+lana:
+  user: lana
+  password_digest: <%= AuthInfo.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now.to_datetime %>
+
+mallory:
+  user: mallory
+  password_digest: <%= AuthInfo.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now.to_datetime %>
+
+<% 30.times do |n| %>
+auto_info_<%= n %>:
+  user: user_<%= n %>
+  password_digest: <%= AuthInfo.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now.to_datetime %>
+<% end %>

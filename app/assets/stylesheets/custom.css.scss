@@ -9,6 +9,12 @@ $gray-medium-light: #eaeaea;
   box-sizing: border-box;
 }
 
+@mixin inimei_shadow {
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 1.5px 1.5px 1.5px 1.5px rgba(150,150,150,0.75);
+}
+
 body {
   background-color: #ededef;
 }
@@ -273,6 +279,12 @@ input {
   .input-picture-btn {
     display: inline-block;
     vertical-align: bottom;
+  }
+}
+
+#setting {
+  .tab-content {
+    @include inimei_shadow;
   }
 }
 

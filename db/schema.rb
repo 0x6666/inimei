@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160126013612) do
+ActiveRecord::Schema.define(version: 20160203140853) do
+
+  create_table "auth_infos", force: :cascade do |t|
+    t.string   "password_digest",   limit: 255
+    t.integer  "user_id",           limit: 4
+    t.string   "remember_digest",   limit: 255
+    t.string   "activation_digest", limit: 255
+    t.boolean  "activated",         limit: 1,   default: false
+    t.datetime "activated_at"
+    t.string   "reset_digest",      limit: 255
+    t.datetime "reset_sent_at"
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
+  end
+
+  add_index "auth_infos", ["user_id"], name: "index_auth_infos_on_user_id", using: :btree
 
   create_table "blog_posts", force: :cascade do |t|
     t.boolean  "published",        limit: 1
@@ -103,23 +118,17 @@ ActiveRecord::Schema.define(version: 20160126013612) do
   add_index "sub_schedules", ["schedule_id"], name: "index_sub_schedules_on_schedule_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "name",              limit: 255
-    t.string   "email",             limit: 255
-    t.datetime "created_at",                                    null: false
-    t.datetime "updated_at",                                    null: false
-    t.string   "password_digest",   limit: 255
-    t.string   "remember_digest",   limit: 255
-    t.boolean  "admin",             limit: 1,   default: false
-    t.string   "activation_digest", limit: 255
-    t.boolean  "activated",         limit: 1,   default: false
-    t.datetime "activated_at"
-    t.string   "reset_digest",      limit: 255
-    t.datetime "reset_sent_at"
-    t.string   "avatar",            limit: 255
+    t.string   "name",       limit: 255
+    t.string   "email",      limit: 255
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.boolean  "admin",      limit: 1,   default: false
+    t.string   "avatar",     limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
+  add_foreign_key "auth_infos", "users"
   add_foreign_key "blog_settings", "users"
   add_foreign_key "schedules", "users"
   add_foreign_key "sub_schedules", "schedules"

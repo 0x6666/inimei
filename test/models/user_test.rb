@@ -3,7 +3,8 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
 
   def setup
-    @user = User.new name: 'Test Name', email: 'testname@test.com', password: 'test_a', password_confirmation: 'test_a'
+    @user = User.new name: 'Test Name', email: 'testname@test.com'
+    @user.auth_info = AuthInfo.new user: @user, password: 'test_a', password_confirmation: 'test_a'
   end
 
   test 'should be valid' do
@@ -54,8 +55,8 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'password should have a minimum length' do
-    @user.password= @user.password_confirmation = 'a' * 5
-    assert_not @user.valid?
+    @user.auth_info.password= @user.auth_info.password_confirmation = 'a' * 5
+    assert_not @user.auth_info.valid?
   end
 
   test 'email should be save as lower case' do
@@ -67,7 +68,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'authenticated? should return false for user with nil digest' do
-    assert_not @user.authenticated? :remember, ''
+    assert_not @user.auth_info.authenticated? :remember, ''
   end
 
   test 'associated microposts should be destroyed' do
