@@ -19,6 +19,7 @@ module ApplicationHelper
   end
 
   class HTMLwithCodeRay < Redcarpet::Render::HTML
+
     def block_code(code, language)
       Pygments.highlight(code, lexer: language)
       #CodeRay.scan(code, language).div(tab_width: 2)
@@ -41,5 +42,4 @@ module ApplicationHelper
     markdown = Redcarpet::Markdown.new(HTMLwithCodeRay, options)
     markdown.render(h(text)).html_safe
   end
-
 end
