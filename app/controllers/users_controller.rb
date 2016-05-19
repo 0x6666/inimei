@@ -106,7 +106,7 @@ class UsersController < ApplicationController
     render 'show_follow'
   end
 
-  def schedulesbasic_params
+  def schedules
     @user = current_user
     date = params[:date]
     @select_date = date.nil? ? Time.now : Time.new(date[:year], date[:month], date[:day]).end_of_day

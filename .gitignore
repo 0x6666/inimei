@@ -43,3 +43,4 @@ coverage/
 .rbenv-version
 .rvmrc
 
+.vscode

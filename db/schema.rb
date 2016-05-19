@@ -45,15 +45,15 @@ ActiveRecord::Schema.define(version: 20160203140853) do
 
   create_table "blog_settings", force: :cascade do |t|
     t.integer  "user_id",           limit: 4
-    t.string   "blog_name",         limit: 255
-    t.string   "blog_subtitle",     limit: 255
-    t.integer  "blogs_per_page",    limit: 4
-    t.integer  "blog_preview_size", limit: 4
+    t.string   "blog_name",         limit: 255, default: "INiMei Blog"
+    t.string   "blog_subtitle",     limit: 255, default: "No subtitle"
+    t.integer  "blogs_per_page",    limit: 4,   default: 10
+    t.integer  "blog_preview_size", limit: 4,   default: 150
     t.string   "linkedin_url",      limit: 255
     t.string   "weibo_name",        limit: 255
     t.string   "domain",            limit: 255
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",                                            null: false
+    t.datetime "updated_at",                                            null: false
   end
 
   add_index "blog_settings", ["domain"], name: "index_blog_settings_on_domain", unique: true, using: :btree
