@@ -13,13 +13,11 @@ module Blog::CommentsHelper
   end
 
   def can_delete(comment)
-    return false  if comment.nil? || comment.post.nil?
-    user = comment.user
+    return false  if comment.nil? || comment.post.nil? || current_user.nil?
 
-    unless user.nil?
-      return true if user == current_user
-    end
+    return true if comment.post.user_id == current_user.id
+    return false unless comment.user_id.nil?
+    comment.user_id == current_user.id
 
-    comment.post.user == current_user
   end
 end

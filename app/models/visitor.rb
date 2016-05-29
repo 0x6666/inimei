@@ -6,7 +6,6 @@ class Visitor < ActiveRecord::Base
 
 
   def self.get_or_create_visitor(ip)
-    debugger
     return nil if ip.nil? || ip.empty?
 
     visitor = Visitor.find_by_ip ip
