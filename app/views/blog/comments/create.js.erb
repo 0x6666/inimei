@@ -1,0 +1,7 @@
+
+<%if @comment.nil? %>
+    alert("post comment failed!");
+<%else%>
+    $('#comments').append("<%= escape_javascript(render partial: 'blog/comments/comment', locals: {comment: @comment})%>");
+    $('#comment_content').val('');
+<%end%>

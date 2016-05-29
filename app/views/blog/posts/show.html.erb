@@ -12,13 +12,28 @@
     <%= @post.content_markdown ? markdown(@post.content) : raw(@post.content) %>
   </div>
 
-	<div class="tags" data-blog="tags">
+  <div class="tags" data-blog="tags">
     <%= render @post.tags %>
+  </div>
+
+  <div class="comments-footer">
+    <div class="comments" id="comments">
+      <%= render @comments %>
+     </div>
+
+    <%= form_for(@comment, remote: true, url: blog_post_comments_path(@post)) do |f| %>
+        <div class="field">
+          <%= f.text_area :content, id: 'comment_content', class:  'content-markdown', placeholder: 'Compose new comment...' %>
+        </div>
+
+        <%= f.submit 'Submit', class: 'btn btn-primary' %>
+    <% end %>
   </div>
 
   <!-- %= render 'blog/posts/social_sharing' %-->
 
-  <!--div id="disqus_thread"></div-->
-  <!--%= render 'layouts/blog/application/disqus_embed' %-->
-  <noscript>Please enable JavaScript to view the comments.</noscript>
 </article>
+
+<script type="text/javascript">
+    $("#comment_content").markItUp(custom_settings);
+</script>

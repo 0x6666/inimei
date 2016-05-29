@@ -207,6 +207,37 @@ ul {
     }
   }
 
+  .comments-footer {
+    background: #f3f3f3;
+    border-top: 1px solid #dddddd;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    padding: 10px 40px;
+
+    .comment {
+      margin-bottom: 10px;
+      border-bottom: 1px solid #dddddd;
+      .comment-head {
+        background: #f3f3f3;
+        padding: 5px 10px ;
+      }
+
+      .comment-body {
+        border: 1px solid #dddddd;
+        margin: 0 10px;
+        margin-bottom: 5px;
+        background-color: white;
+        padding: 5px;
+      }
+    }
+
+
+
+    .markItUpEditor {
+      height:100px;
+    }
+  }
+
 }
 
 .tag-search,

@@ -9,4 +9,6 @@
  *= require blog/foundation_icons/social_foundicons
  *= require blog/blog/blog
  *= require shared/pygment
+ *= require markitup/skins/simple/style
+ *= require blog/admin/custom-markdown
 */

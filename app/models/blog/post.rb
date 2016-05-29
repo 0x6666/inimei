@@ -37,6 +37,10 @@ class Blog::Post < ActiveRecord::Base
     self.published && self.published_at > DateTime.now
   end
 
+  def all_comments
+      Blog::Comment.where(post_id: id)
+  end
+
   def self.page(p, per_page)
     paged_results(p, per_page || 10, false)
   end

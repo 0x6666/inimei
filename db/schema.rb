@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160529024847) do
+ActiveRecord::Schema.define(version: 20160529062617) do
 
   create_table "auth_infos", force: :cascade do |t|
     t.string   "password_digest",   limit: 255
@@ -29,15 +29,17 @@ ActiveRecord::Schema.define(version: 20160529024847) do
   add_index "auth_infos", ["user_id"], name: "index_auth_infos_on_user_id", using: :btree
 
   create_table "blog_comments", force: :cascade do |t|
-    t.text     "content",      limit: 65535
-    t.integer  "user_id",      limit: 4
-    t.integer  "blog_post_id", limit: 4
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.text     "content",    limit: 65535
+    t.integer  "user_id",    limit: 4
+    t.integer  "post_id",    limit: 4
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.integer  "visitor_id", limit: 4,     default: 0
   end
 
-  add_index "blog_comments", ["blog_post_id"], name: "index_blog_comments_on_blog_post_id", using: :btree
+  add_index "blog_comments", ["post_id"], name: "index_blog_comments_on_post_id", using: :btree
   add_index "blog_comments", ["user_id"], name: "index_blog_comments_on_user_id", using: :btree
+  add_index "blog_comments", ["visitor_id"], name: "index_blog_comments_on_visitor_id", using: :btree
 
   create_table "blog_posts", force: :cascade do |t|
     t.boolean  "published",        limit: 1
@@ -139,8 +141,16 @@ ActiveRecord::Schema.define(version: 20160529024847) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
+  create_table "visitors", force: :cascade do |t|
+    t.string   "ip",         limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "visitors", ["ip"], name: "index_visitors_on_ip", unique: true, using: :btree
+
   add_foreign_key "auth_infos", "users"
-  add_foreign_key "blog_comments", "blog_posts"
+  add_foreign_key "blog_comments", "blog_posts", column: "post_id"
   add_foreign_key "blog_comments", "users"
   add_foreign_key "blog_settings", "users"
   add_foreign_key "schedules", "users"

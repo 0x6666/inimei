@@ -40,6 +40,12 @@ Rails.application.routes.draw do
 
       get '/tags/:tag' =>'tags#show', as: 'tags_page'
 
+      resources :posts , only: [] do
+        resources :comments, only: [:create, :destroy]
+      end
+      #post '/:post_id/comments' => 'comments#create'
+      #delete '/:post_id/comment/:comment_id' => 'comments#delete'
+
       namespace :admin do
         get '/' => 'posts#index', as:  '' # responds to admin_url and admin_path
         get '/page/:page', to:  'posts#index', as:  'posts_page'

@@ -7,3 +7,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//= require markitup
+//= require markitup/sets/markdown/set
+//= require blog/admin/custom-markitup

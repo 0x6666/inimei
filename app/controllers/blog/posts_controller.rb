@@ -8,13 +8,19 @@ class Blog::PostsController < Blog::BlogBaseController
 
   def show
     @setting = blog_setting
+
     if current_user
       @post = Blog::Post.default.where('url = :url', {url: params[:post_url]}).first
     else
       @post = Blog::Post.published.where('url = :url', {url: params[:post_url]}).first
     end
+
     if @post.nil?
       not_found
+    else
+      comments = @post.comments
+      @comments = comments
+      @comment = comments.build
     end
   end
 

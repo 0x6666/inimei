@@ -1,0 +1,18 @@
+<% unless comment.id.nil? %>
+<div class="comment" id="comment-<%=comment.id%>">
+  <div class="comment-head">
+    <span data-blog="user">
+      <%=comment_visitor_desc(comment)%>
+    </span>
+    <span data-blog="time">
+      <time datetime="<%= comment.created_at %>">
+        <%= I18n.localize(comment.created_at.to_date, format: :long) %>
+      </time>
+    </span>
+    <%if can_delete(comment) %>
+    <%= link_to 'delete', blog_post_comment_path(comment.post, comment), remote: true, method: :delete, data: {confirm: 'You sure?'} %>
+    <%end%>
+  </div>
+  <div class="comment-body"><%=markdown comment.content%></div>
+</div>
+<%end%>
