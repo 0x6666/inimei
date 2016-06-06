@@ -1,8 +1,6 @@
 <% provide(:title, 'Help') %>
 <h1>Help</h1>
 
-<p>Sorry, There's nothing here.</p>
-
 <% if Rails.env.development? %>
     <div class="dev-help">
       <h3>CSS</h3>
@@ -16,21 +14,27 @@
 <% end %>
 
 <h3>Resolv</h3>
+<table border="1">
+  <tr>
+    <th>Domain</th>
+    <th>Address</th>
+  </tr>
 <% ips = resolv_domain('www.google.com') %>
 <% if !ips.nil? && ips.any? %>
-    <table border="1">
-      <tr>
-        <th>Domain</th>
-        <th>Address</th>
-      </tr>
-      <tr>
-        <td>www.google.com</td>
-        <td>
-          <%= ips.to_s %>
-        </td>
-      </tr>
-    </table>
+  <tr>
+    <td>www.google.com</td>
+    <td><%= ips.to_s %></td>
+  </tr>
 <% end %>
+<% ips = resolv_domain('go.googlesource.com') %>
+<% if !ips.nil? && ips.any? %>
+  <tr>
+    <td>go.googlesource.com</td>
+    <td><%= ips.to_s %></td>
+  </tr>
+<% end %>
+</table>
+
 
 
 <h3>Markdown lexical analyzer</h3>
